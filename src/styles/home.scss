@@ -1,0 +1,50 @@
+.wrapper-home{
+    .booking-container{
+        .btn-booking{
+            width: 100px;
+            height: 30px;
+            border: 1px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2px;
+            a{
+                text-decoration: none;
+                color: white;
+            }
+        }
+        .btn-booking:hover{
+            background-color: #2c2b2b;
+            cursor: pointer;
+        }
+    }
+    .four-images-container{
+        background-color: #BF7138;
+    }
+    .opening-hours-container{
+
+    }
+    .meny-container{
+        .btn-meny{
+            width: 100px;
+            height: 30px;
+            border: 1px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2px;
+            a{
+                text-decoration: none;
+                color: white;
+            }
+        }
+        .btn-meny:hover{
+            background-color: #2c2b2b;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+}
