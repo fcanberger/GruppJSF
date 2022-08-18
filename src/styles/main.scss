@@ -13,7 +13,13 @@
                 list-style: none;
                 gap: 20px;
                 li{
-
+                    a{
+                      text-decoration: none;  
+                    }
+                    a:hover {
+                        text-decoration: underline;
+                    }
+                
                 }
             }
         }
