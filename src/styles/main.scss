@@ -1,32 +1,32 @@
 @import "home";
-body{
-color:white;
-background-color: #1E1E1E;
-.wrapper{
+@import "admin";
+body {
+  color: white;
+  background-color: #1e1e1e;
+  .wrapper {
     margin: 10px;
-    header{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0px 15px;
-        nav{
-            ul{
-                display: flex;
-                flex-direction: row;
-                list-style: none;
-                gap: 20px;
-                li{
-                    a{
-                      text-decoration: none;  
-                    }
-                    a:hover {
-                        text-decoration: underline;
-                    }
-                
-                }
+    header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0px 15px;
+      nav {
+        ul {
+          display: flex;
+          flex-direction: row;
+          list-style: none;
+          gap: 20px;
+          li {
+            a {
+              text-decoration: none;
             }
+            a:hover {
+              text-decoration: underline;
+            }
+          }
         }
+      }
     }
-}
+  }
 }

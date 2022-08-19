@@ -47,7 +47,7 @@ export const Home = () => {
             <p>Facebook icon</p>
             <p>Instagram icon</p>
           </div>
-          <p>Link to Admin login</p>
+          <Link to="/admin">Logga in personal</Link>
           <p>Copyright 2022 | buona mascella</p>
         </footer>
       </div>
