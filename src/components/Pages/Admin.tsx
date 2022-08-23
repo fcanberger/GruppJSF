@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import whiteLogo from "../../assets/whiteLogo.png";
 //import { Reservation } from "./Reservation";
 
 export const Admin = () => {
@@ -69,6 +70,8 @@ export const Admin = () => {
 
   return (
     <div className="admin-container">
+      <img src={whiteLogo} alt="Logo" width={400} />
+
       <h2>Logga in</h2>
       {adminLogin ? <Navigate to="/Reservation" /> : loginForm}
     </div>
