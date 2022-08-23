@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
-import { Reservation } from "./Reservation";
+//import { Reservation } from "./Reservation";
 
 export const Admin = () => {
   const [adminLogin, setAdminLogin] = useState(false);
-  const [errorMessages, setErrorMessages] = useState({});
+  //const [errorMessages, setErrorMessages] = useState({});
 
   const loginInfo = [
     {
@@ -32,13 +32,13 @@ export const Admin = () => {
     if (userAdmin) {
       if (userAdmin.password !== pass.value) {
         // fel password
-        setErrorMessages({ name: "pass", message: errors.pass });
+        //setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setAdminLogin(true);
       }
     } else {
       // Username inte hittat
-      setErrorMessages({ name: "uname", message: errors.uname });
+      //setErrorMessages({ name: "uname", message: errors.uname });
     }
   };
 
