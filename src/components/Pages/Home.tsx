@@ -80,19 +80,8 @@ export const Home = () => {
             <Link to="/meny">Meny</Link>
           </div>
           <hr></hr>
-          <footer>
-            <p>Telefon: 08 - 12 34 56</p>
-            <p>Epost: info@buonamascella.se</p>
-            <p>Adress: Gott käk 10, Stockholm</p>
-            <div className="media-icons-container">
-              <p>Facebook icon</p>
-              <p>Instagram icon</p>
-            </div>
-            <p>Link to Admin login</p>
-            <p>Copyright 2022 | buona mascella</p>
-          </footer>
         </div>
-        <hr></hr>
+
         <footer>
           <p>Telefon: 08 - 12 34 56</p>
           <p>Epost: info@buonamascella.se</p>
