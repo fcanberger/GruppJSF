@@ -1,7 +1,10 @@
 @import "home";
+@import "admin";
+
 body {
   color: white;
   background-color: #1e1e1e;
+  font-family: transat-text, sans-serif;
   .wrapper {
     // margin: 10px;
     header {
