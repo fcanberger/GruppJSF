@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-import hero from "../../assets/hero.jpg";
-import tomatopasta from "../../assets/tomatopasta.jpg";
-import pizzaleft from "../../assets/pizzaleft.jpg";
-import tomatos from "../../assets/tomatos.jpg";
-import pastacheese from "../../assets/pastacheese.jpg";
+// import hero from "../../assets/hero.jpg";
+// import tomatopasta from "../../assets/tomatopasta.jpg";
+// import pizzaleft from "../../assets/pizzaleft.jpg";
+// import one from "../../assets/one.jpg";
+// import pastacheese from "../../assets/pastacheese.jpg";
+import facebook from "../../assets/facebook.svg";
+import instagram from "../../assets/instagram.svg";
 
 export const Home = () => {
   return (
@@ -24,37 +26,19 @@ export const Home = () => {
           </div>
         </div>
         <div className="four-images-container">
-          <div className="image-one">
-            <img
-              className="tomatopasta"
-              src={tomatopasta}
-              alt="tomato pasta"
-              width={200}
-            />
+          {/* <div className="image-wrapper-mobile">
+            <div className="image-one"></div>
+            <div className="image-two"></div>
           </div>
-          <div className="image-two">
-            <img
-              className="tomatopasta"
-              src={pizzaleft}
-              alt="pizza"
-              width={200}
-            />
-          </div>
-          <div className="image-three">
-            <img
-              className="tomatopasta"
-              src={tomatos}
-              alt="tomatos"
-              width={200}
-            />
-          </div>
-          <div className="image-four">
-            <img
-              className="tomatopasta"
-              src={pastacheese}
-              alt="cheese"
-              width={200}
-            />
+          <div className="image-wrapper-mobile">
+            <div className="image-three"></div>
+            <div className="image-four"></div>
+          </div> */}
+          <div className="image-wrapper">
+            <div className="image-one"></div>
+            <div className="image-two"></div>
+            <div className="image-three"></div>
+            <div className="image-four"></div>
           </div>
         </div>
         <div className="opening-hours-container">
@@ -65,15 +49,13 @@ export const Home = () => {
             <p>Lördag: 12.00 - 01.00</p>
             <p>Söndag: 12.00 - 23.00</p>
           </div>
+          <div className="opening-image-container"></div>
         </div>
 
-        <div className="opening-image-container">
-          <p>BILD</p>
-        </div>
         <div className="meny-container">
           <div className="meny-images-container">
-            <p>BILD</p>
-            <p>BILD</p>
+            <div className="image-six"></div>
+            <div className="image-seven"></div>
           </div>
           <p>Vi erbjuder er det bästa käket från det italienska köket</p>
           <div className="btn-meny">
@@ -81,7 +63,6 @@ export const Home = () => {
           </div>
           <hr></hr>
         </div>
-
         <footer>
           <p>Telefon: 08 - 12 34 56</p>
           <p>Epost: info@buonamascella.se</p>
@@ -91,6 +72,24 @@ export const Home = () => {
             <p>Instagram icon</p>
           </div>
           <Link to="/admin">Logga in personal</Link>
+          <a href="http://www.facebook.com">
+            <img
+              className="media-icon"
+              src={facebook}
+              alt="tomato pasta"
+              width={30}
+            />
+          </a>
+          <a href="http://instagram.com">
+            <img
+              className="media-icon"
+              src={instagram}
+              alt="tomato pasta"
+              width={30}
+            />
+          </a>
+
+          <p>Link to Admin login</p>
           <p>Copyright 2022 | buona mascella</p>
         </footer>
       </div>
