@@ -1,0 +1,33 @@
+.mainBooking {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .datePicker {
+    display: flex;
+
+    div.sdp {
+      background-color: rgb(148, 148, 148);
+      --outline: 1px solid #a6a6a6;
+      border-radius: 0.1rem;
+
+      .sdp--dates-grid {
+        background-color: rgb(148, 148, 148);
+      }
+      .sdp--square-btn {
+        border-radius: 0.2rem;
+      }
+    }
+
+    .sdp {
+      --selected-date-color: #eeeeee !important;
+    }
+    .stp {
+      --disabled-color: gray !important;
+    }
+    .sdp {
+      --theme-color: #bf7138 !important;
+    }
+  }
+}
