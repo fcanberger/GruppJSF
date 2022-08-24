@@ -5,7 +5,7 @@ import whiteLogo from "../../assets/whiteLogo.png";
 
 export const Admin = () => {
   const [adminLogin, setAdminLogin] = useState(false);
-  //const [errorMessages, setErrorMessages] = useState({});
+  const [errorMessages, setErrorMessages] = useState({});
 
   const loginInfo = [
     {
@@ -33,20 +33,20 @@ export const Admin = () => {
     if (userAdmin) {
       if (userAdmin.password !== pass.value) {
         // fel password
-        //setErrorMessages({ name: "pass", message: errors.pass });
+        setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setAdminLogin(true);
       }
     } else {
       // Username inte hittat
-      //setErrorMessages({ name: "uname", message: errors.uname });
+      setErrorMessages({ name: "uname", message: errors.uname });
     }
   };
 
   //const renderErrorMessage = (name: any) =>
   // name === errorMessages.name && (
-  //    <div className="error">{errorMessages.message}</div>
-  // );{renderErrorMessage("uname")}------{renderErrorMessage("pass")}
+  // <div className="error">{errorMessages.message}</div>
+  //  );
 
   const loginForm = (
     <div className="form">
@@ -54,10 +54,12 @@ export const Admin = () => {
         <div className="input-container">
           <label>Användarnamn </label>
           <input className="input-box" type="text" name="uname" required />
+          {/*{renderErrorMessage("uname")} */}
         </div>
         <div className="input-container">
           <label>Lösenord </label>
           <input className="input-box" type="password" name="pass" required />
+          {/* {renderErrorMessage("pass")}*/}
         </div>
         <div className="button-container">
           <button className="btn-submit" type="submit">
