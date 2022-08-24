@@ -12,7 +12,7 @@ export const Booking = () => {
   };
 
   const Results = () => (
-    <div id="results" className="search-results">
+    <div id="results" className="time-results">
       <p>18:00</p>
       <p>21:00</p>
     </div>
