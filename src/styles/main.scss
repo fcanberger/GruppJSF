@@ -1,4 +1,5 @@
 @import "home";
+
 body{
 color:white;
 background-color: #1E1E1E;
@@ -18,6 +19,7 @@ background-color: #1E1E1E;
             // top:0px;
             // left: 25px;
             z-index: 10;
+            color:white
         }
         nav{
             z-index: 10;
@@ -35,6 +37,7 @@ background-color: #1E1E1E;
                 z-index: 10;
                 li{
                     margin-top: 40px;
+                    color: white;
                     a{
                       text-decoration: none;  
                       text-align: center;
@@ -47,7 +50,6 @@ background-color: #1E1E1E;
                       transition: all 0.5s ease-out;
                       margin-top: 50px;
                     }
-                   
                     a:hover {
                         text-decoration: underline;
                     }
@@ -80,6 +82,9 @@ background-color: #1E1E1E;
 }
 }
 
+h3 {
+    color:white;
+   }
 
 @media screen and (min-width: 768px) {
 
@@ -94,6 +99,11 @@ background-color: #1E1E1E;
                         list-style-type: none;
                         gap: 15px;
                         margin: 0px 15px;
+                        li{
+                            a{
+                                text-decoration: none;
+                            }
+                        }
                     }
                     
                     .mobile-menu-icon{
