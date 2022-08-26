@@ -1,17 +1,10 @@
 const mongoose = require('mongoose')
 
 const bookingTemplate = new mongoose.Schema({
-    firstName:{
-        type:String,
-        required:true
-    },
-    number:{
-        type:Number,
-        required:true
-    },
-    email:{
-        type:String,
-        required:true
+    customerId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Customers',
+        required: true
     },
     AOP:{ //Amount Of People
         type:Number,
@@ -20,6 +13,10 @@ const bookingTemplate = new mongoose.Schema({
     date:{
         type:Date,
         default:Date.now
+    },
+    time:{
+        type: String,
+        required: true
     }
 })
 
