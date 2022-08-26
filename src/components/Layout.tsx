@@ -19,7 +19,7 @@ export const Layout = () => {
       <div className="wrapper">
         <header>
           <Link to="/" className="home">
-            <img className="logo" src={whiteLogo} alt="Logo" width={190} />
+            <img className="logo" src={whiteLogo} alt="Logo" width={220} />
           </Link>
 
           <nav>
