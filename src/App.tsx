@@ -9,6 +9,7 @@ import { Meny } from "./components/Pages/Meny";
 import { Contact } from "./components/Pages/Contact";
 import { Admin } from "./components/Pages/Admin";
 import { Reservation } from "./components/Pages/Reservation";
+import { Footer } from "./components/Pages/Footer";
 
 function App() {
   return (

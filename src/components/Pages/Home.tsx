@@ -1,26 +1,34 @@
 import { Link } from "react-router-dom";
+import whiteLogo from "../../assets/whiteLogo.png";
 // import hero from "../../assets/hero.jpg";
 // import tomatopasta from "../../assets/tomatopasta.jpg";
 // import pizzaleft from "../../assets/pizzaleft.jpg";
 // import one from "../../assets/one.jpg";
 // import pastacheese from "../../assets/pastacheese.jpg";
-import facebook from "../../assets/facebook.svg";
-import instagram from "../../assets/instagram.svg";
 
 export const Home = () => {
   return (
     <>
       <div className="hero-image"></div>
+      <div className="spaceSection"></div>
       <div className="wrapper-home">
         {/* <img src={hero} alt="hero image" height={200} width={500} /> */}
         <div className="booking-container">
-          <p>Varmt välkomna att boka bord hoss oss på Buona mascella.</p>
-          <p>
-            Vill ni boka bord för fler än 6 personer, vänligen kontakta oss.
-          </p>
-          <p>
-            Behöver ni avboka ser vi gärna att ni gör det innan 15.00 samma dag.
-          </p>
+          <h2 className="Welcome-text">Välkommen till </h2>
+          <img src={whiteLogo} alt="Logo" width={400} />
+          <div className="text-div-booking">
+            <p>
+              Varmt välkomna att boka bord hoss oss via vår bokningsida som ni
+              hittar via knappen nedan
+            </p>
+            <p>
+              Vill ni boka bord för fler än 6 personer, vänligen kontakta oss.
+            </p>
+            <p>
+              Behöver ni avboka ser vi gärna att ni gör det innan 15.00 samma
+              dag.
+            </p>
+          </div>
           <div className="btn-booking">
             <Link to="/booking">Boka bord</Link>
           </div>
@@ -63,33 +71,6 @@ export const Home = () => {
           </div>
           <hr></hr>
         </div>
-        <footer>
-          <p>Telefon: 08 - 12 34 56</p>
-          <p>Epost: info@buonamascella.se</p>
-          <p>Adress: Gott käk 10, Stockholm</p>
-          <div className="media-icons-container">
-            <p>Facebook icon</p>
-            <p>Instagram icon</p>
-          </div>
-          <Link to="/admin">Logga in personal</Link>
-          <a href="http://www.facebook.com">
-            <img
-              className="media-icon"
-              src={facebook}
-              alt="tomato pasta"
-              width={30}
-            />
-          </a>
-          <a href="http://instagram.com">
-            <img
-              className="media-icon"
-              src={instagram}
-              alt="tomato pasta"
-              width={30}
-            />
-          </a>
-          <p>Copyright 2022 | buona mascella</p>
-        </footer>
       </div>
     </>
   );
