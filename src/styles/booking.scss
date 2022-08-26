@@ -30,4 +30,52 @@
       --theme-color: #bf7138 !important;
     }
   }
+
+  // TIME AND AMOUNT OF PEOPLE
+  #results{
+      display: flex;
+      gap: 5px;
+      input[type=radio]{
+        width: 20px;
+        height: 20px;
+      }
+      label{
+        font-size: 20px;
+      }
+      select{
+        width: 70px;
+        margin-left: 5px;
+      }
+    
+  }
+  .bookings {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      label{
+        font-size: 20px;
+      }
+      input[type=text]{
+        width: 320px;
+        height: 40px;
+      }
+      .btn-submit{
+        width: 200px;
+        height: 40px;
+        border: 1px solid white;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        padding: 2px;
+        margin: 40px;
+        font-size: 18px;
+        background-color: transparent;
+        color: white;
+      }
+      .btn-submit:hover{
+        background-color: #363636;
+
+    }
+  }
 }
