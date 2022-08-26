@@ -1,8 +1,51 @@
-.menuContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 50px;
-  gap: 30px;
+@media screen and (max-width: 597px) {
+  .menuContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding-top: 20px;
+
+    .menuImg {
+      width: 400px;
+    }
+    .dessertMenu {
+      width: 400px;
+    }
+  }
+}
+
+@media screen and (min-width: 598px) {
+  .menuContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    gap: 30px;
+  }
+  .menuImg {
+    width: 600px;
+  }
+  .dessertMenu {
+    width: 600px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .menuContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    gap: 30px;
+  }
+  .menuImg {
+    width: 800px;
+  }
+  .dessertMenu {
+    width: 800px;
+  }
 }

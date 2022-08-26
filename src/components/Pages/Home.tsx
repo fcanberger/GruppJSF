@@ -88,8 +88,6 @@ export const Home = () => {
               width={30}
             />
           </a>
-
-          <p>Link to Admin login</p>
           <p>Copyright 2022 | buona mascella</p>
         </footer>
       </div>

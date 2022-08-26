@@ -19,7 +19,7 @@ export const Layout = () => {
       <div className="wrapper">
         <header>
           <Link to="/" className="home">
-            <img className="logo" src={whiteLogo} alt="Logo" width={220} />
+            <img className="logo" src={whiteLogo} alt="Logo" width={200} />
           </Link>
 
           <nav>
@@ -29,17 +29,17 @@ export const Layout = () => {
             >
               <li>
                 <Link to="/meny" className="meny">
-                  <h3>Vår meny</h3>
+                  <h3>MENY</h3>
                 </Link>
               </li>
               <li>
                 <Link to="/booking" className="booking">
-                  <h3>Boka bord</h3>
+                  <h3>BOKA BORD</h3>
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="contact">
-                  <h3>Kontakt</h3>
+                  <h3>KONTAKT</h3>
                 </Link>
               </li>
             </ul>

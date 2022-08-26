@@ -3,11 +3,11 @@ import dessertMeny from "../../assets/dessertMeny.png";
 export const Meny = () => {
   return (
     <div className="menuContainer">
-      <div>
-        <img src={menyRestaurant} alt="menu" width={800} />
+      <div className="imgSection">
+        <img className="menuImg" src={menyRestaurant} alt="menu" />
       </div>
-      <div>
-        <img src={dessertMeny} alt="menu" width={800} />
+      <div className="imgSection">
+        <img className="dessertMenu" src={dessertMeny} alt="menu" />
       </div>
     </div>
   );
