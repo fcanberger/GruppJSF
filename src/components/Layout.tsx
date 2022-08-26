@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import "../styles/main.scss";
+import whiteLogo from "../assets/whiteLogo.png";
 
 export const Layout = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -18,7 +19,7 @@ export const Layout = () => {
       <div className="wrapper">
         <header>
           <Link to="/" className="home">
-            <h2>LOGO</h2>
+            <img className="logo" src={whiteLogo} alt="Logo" width={190} />
           </Link>
 
           <nav>
@@ -28,7 +29,7 @@ export const Layout = () => {
             >
               <li>
                 <Link to="/meny" className="meny">
-                  <h3>Meny</h3>
+                  <h3>Vår meny</h3>
                 </Link>
               </li>
               <li>

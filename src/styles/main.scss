@@ -8,9 +8,9 @@ body {
   background-color: #1e1e1e;
   font-family: transat-text, sans-serif;
   .wrapper {
-    // margin: 10px;
+    margin: 10px;
     header {
-      // position: absolute;
+      position: relative;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -22,9 +22,10 @@ body {
         z-index: 10;
         color: white;
         a {
-          color: white;
+          //color: white;
         }
       }
+
       nav {
         z-index: 10;
         .nav-links-mobile {
@@ -91,6 +92,9 @@ h3 {
   body {
     .wrapper {
       header {
+        .logo {
+          padding-top: 12px;
+        }
         nav {
           .nav-links {
             display: flex;
@@ -102,6 +106,7 @@ h3 {
             li {
               a {
                 text-decoration: none;
+                font-size: larger;
               }
             }
           }
