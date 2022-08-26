@@ -1,16 +1,12 @@
 .hero-image {
   background-image: url(../assets/hero-mobile.jpg);
   width: 100%;
-  //height: 100vh;
+  height: 100vh;
   background-position: center;
   position: absolute;
   top: 0;
 }
-.spaceSection {
-  background-color: #1e1e1e;
-  //height: 290px;
-  padding: 287px;
-}
+
 .wrapper-home {
   margin: 0 auto;
   position: relative;
@@ -317,6 +313,11 @@
     background-position: center;
     position: absolute;
     top: 0;
+  }
+  .spaceSection {
+    background-color: #1e1e1e;
+    //height: 290px;
+    padding-top: 325px;
   }
 }
 

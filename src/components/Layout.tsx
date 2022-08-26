@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import "../styles/main.scss";
-import whiteLogo from "../assets/whiteLogo.png";
+
 import { Footer } from "../components/Pages/Footer";
 
 export const Layout = () => {
