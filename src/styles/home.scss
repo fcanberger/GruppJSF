@@ -58,7 +58,7 @@
     background-color: #bf7138;
     min-height: 200px;
     width: 100%;
-    padding: 15px 0px;
+    padding: 25px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -348,6 +348,7 @@
       width: 100%;
       display: flex;
       flex-direction: row;
+      padding: 45px;
       .image-wrapper {
         width: 100%;
         display: flex;
@@ -358,15 +359,20 @@
           background-image: url(../assets/tomato-desktop.jpg);
           background-repeat: no-repeat;
           background-position: center;
+
           height: 400px;
-          width: 22%;
+          width: 270px;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+            0 4px 10px 0 rgba(54, 54, 54, 0.19);
         }
         .image-two {
           background-image: url(../assets/parmesan-desktop.jpg);
           background-repeat: no-repeat;
           background-position: center;
           height: 400px;
-          width: 22%;
+          width: 270px;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+            0 4px 10px 0 rgba(54, 54, 54, 0.19);
         }
 
         .image-three {
@@ -374,14 +380,18 @@
           background-repeat: no-repeat;
           background-position: center;
           height: 400px;
-          width: 22%;
+          width: 270px;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+            0 4px 10px 0 rgba(54, 54, 54, 0.19);
         }
         .image-four {
           background-image: url(../assets/pastacheese-desktop.jpg);
           background-repeat: no-repeat;
           background-position: center;
           height: 400px;
-          width: 22%;
+          width: 270px;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+            0 4px 10px 0 rgba(54, 54, 54, 0.19);
         }
       }
     }
