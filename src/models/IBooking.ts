@@ -1,8 +1,8 @@
-import { ICustomers } from './ICustomers'
+import { ICustomers } from "./ICustomers";
 
 export interface IBooking {
-    id?: string,
-    AOP: number,
-    date: string,
-    time: string
+  id: string;
+  AOP: number;
+  date: string;
+  time: string;
 }
