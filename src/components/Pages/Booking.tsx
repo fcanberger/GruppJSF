@@ -1,5 +1,10 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { IBooking } from "../../models/IBooking";
+import { ICustomers } from "../../models/ICustomers";
 import DatePicker from "sassy-datepicker";
+import { IReservations } from "../../models/IReservations";
+import { timeEnd } from "console";
 
 export const Booking = () => {
   const [date, setDate] = useState(new Date());
@@ -7,24 +12,25 @@ export const Booking = () => {
   const [bookingForm, setBookingForm] = useState(false);
   const [amount, setAmount] = useState(0);
   const [time, setTime] = useState("");
-  const [bookingInfo, setBookingInfo] = useState({
-    fname: "",
+  const [bookingInfoCustomer, setBookingInfoCustomer] = useState<ICustomers>({
+    name: "",
     number: "",
     email: "",
   });
-  // const [errors, setErrors] = useState({
-  //   required: false,
-  //   requiredMsg: "",
-  // });
+
   const [errors, setErrors] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
     if (date && time && amount) {
-      setBookingForm(true);
-      console.log("datum, tid och antal:" + date, time, amount);
+      // setBookingForm(true);
+      checkAvailable();
+
+      console.log("TJOHO", new Date(date).toISOString().split("T")[0]);
     }
   }, [date, amount, time]);
+
+  console.log("UTANFÖR", new Date(date).toISOString().split("T")[0]);
 
   const onChange = (newDate: Date) => {
     console.log(`New date selected - ${newDate.toString()}`);
@@ -32,11 +38,58 @@ export const Booking = () => {
     setShowTime(true);
   };
 
-  // TAR FRAM INFORMATIONS FORMULÄRET
+  //FETCH BOOKINGS AND CHECK AVALIBE
   const checkAvailable = () => {
-    //FETCHA OCH KOLLA IFALL DET ÄR LEDIGT
+    console.log("check avalible");
+    axios
+      .get("http://localhost:8000/availability")
+      .then((response) => {
+        const currentDate = new Date(date).toISOString().split("T")[0];
+        console.log("tid från DB:", response.data);
+        const compareDateAndTime = response.data.filter(
+          (booking: { date: string; time: string }) => {
+            return (
+              currentDate === booking.date.split("T")[0] &&
+              time === booking.time
+            );
+          }
+        );
+        console.log("matched date and time", compareDateAndTime);
 
-    setBookingForm(true);
+        if (compareDateAndTime.length <= 15) {
+          setErrors(false);
+          setBookingForm(true);
+          console.log("det finns bord");
+        } else {
+          console.log("det finns inga bord");
+          const text = "Det är tyvärr fullt, pröva en annan tid eller datum";
+          setErrors(true);
+          setErrorMsg(text);
+          setBookingForm(false);
+        }
+        // for (let i = 0; i < response.data.length; i++) {
+        //   if (currentDate === response.data[i].date.split("T")[0]) {
+        //     console.log(
+        //       "samma lika datum",
+        //       currentDate + "och" + response.data[i].date.split("T")[0]
+        //     );
+        //     if (time === response.data[i].time) {
+        //       console.log("samma tid:", time, "och", response.data[i].time);
+        //       console.log(response);
+        //       if (response.data.length >= 15) {
+        //         console.log("det är fullt");
+        //       } else {
+        //         console.log("det finns bord");
+        //       }
+        //     }
+        //   }
+
+        // }
+        // }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   // HANDLE RADIOBUTTON
@@ -49,76 +102,86 @@ export const Booking = () => {
   const handleAmount = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const amountNumber = parseInt(e.target.value);
     setAmount(amountNumber);
-    // console.log(e.target.value);
+    checkAvailable();
   };
 
   // SET INPUT BOOKING INFORMATION
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.type === "number") {
-      setBookingInfo({ ...bookingInfo, [e.target.name]: +e.target.value });
+      setBookingInfoCustomer({
+        ...bookingInfoCustomer,
+        [e.target.name]: +e.target.value,
+      });
     } else {
-      setBookingInfo({ ...bookingInfo, [e.target.name]: e.target.value });
+      setBookingInfoCustomer({
+        ...bookingInfoCustomer,
+        [e.target.name]: e.target.value,
+      });
     }
   };
 
-  // VALIDATION
-  // const validate = (): boolean => {
-  //   if (bookingInfo.fname.length === 0) {
-  //     console.log("VAFAN");
-  //     setErrors({
-  //       ...errors,
-  //       required: true,
-  //       requiredMsgName: "name",
-  //       requiredMsg: "Vänligen fyll i namn",
-
-  //     });
-  //   }
-  //   if (bookingInfo.number.length === 10) {
-  //   } else {
-  //     setErrors({
-  //       ...errors,
-  //       required: false,
-  //     });
-  //   }
-  //   return false;
-  // };
-
-  // FETCH - GET BOOKINGS
-
   // HANDLE SUBMIT AND VALIDATION
   const handleSubmit = () => {
-    if (bookingInfo.fname === "") {
+    console.log(date);
+    console.log("on submit", new Date(date).toISOString().split("T")[0]);
+
+    if (bookingInfoCustomer.name === "") {
       const text = "Fyll i namn";
       setErrors(true);
       setErrorMsg(text);
-      console.log("fyll i namn");
       return;
     } else {
       setErrors(false);
     }
-    if (bookingInfo.number.length !== 10) {
+    if (bookingInfoCustomer.number.length !== 10) {
       const text = "Telefonnummret måste innehålla 10 siffror";
       setErrors(true);
       setErrorMsg(text);
-      console.log("Telefonnummret måste innehålla 10 siffror");
       return;
     } else {
       setErrors(false);
     }
     const validRegex =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const EmailIsValid = bookingInfo.email.toLowerCase().match(validRegex);
+    const EmailIsValid = bookingInfoCustomer.email
+      .toLowerCase()
+      .match(validRegex);
 
     if (EmailIsValid) {
     } else {
       const text = "Du måste fylla i en giltlig epost";
       setErrors(true);
       setErrorMsg(text);
-      console.log("måste vara en giltlig epost");
       return;
     }
+    console.log("sparar" + date, time, amount, bookingInfoCustomer);
+    setShowTime(false);
+    setBookingForm(false);
+    createBooking();
+  };
 
-    console.log("sparar" + date, time, amount, bookingInfo);
+  // CREATE NEW BOOKING
+  const createBooking = () => {
+    // registered customer
+    const newBooking: IReservations = {
+      customerName: bookingInfoCustomer.name,
+      customerNumber: bookingInfoCustomer.number,
+      customerEmail: bookingInfoCustomer.email,
+      date: date,
+      time: time,
+      AOP: amount,
+    };
+    axios
+      .post("http://localhost:8000/booking", newBooking)
+      .then((response) => {
+        console.log("axios - response.data", response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleCancel = () => {
     setShowTime(false);
     setBookingForm(false);
   };
@@ -177,13 +240,20 @@ export const Booking = () => {
       </div>
       <br></br>
       {showTime ? <TimeAndAmount /> : null}
+      {errors && errorMsg ? (
+        <div className="error-msg">
+          <p>{errorMsg}</p>
+        </div>
+      ) : (
+        ""
+      )}
       {bookingForm ? (
         <div className="bookings">
           <br></br>
           <input
             type="text"
-            name="fname"
-            value={bookingInfo.fname}
+            name="name"
+            value={bookingInfoCustomer.name}
             onChange={handleInputChange}
             placeholder="NAMN*"
             required
@@ -194,10 +264,8 @@ export const Booking = () => {
           <input
             type="text"
             name="number"
-            min="10"
-            max="10"
             placeholder="TELEFONNUMMER*"
-            value={bookingInfo.number}
+            value={bookingInfoCustomer.number}
             onChange={handleInputChange}
             required
           ></input>
@@ -207,7 +275,7 @@ export const Booking = () => {
             type="text"
             name="email"
             placeholder="EPOST*"
-            value={bookingInfo.email}
+            value={bookingInfoCustomer.email}
             onChange={handleInputChange}
             required
           ></input>
@@ -219,6 +287,9 @@ export const Booking = () => {
           ) : (
             ""
           )}
+          <button className="btn-submit" onClick={handleCancel}>
+            Avbryt
+          </button>
           <button className="btn-submit" onClick={handleSubmit}>
             Bekräfta
           </button>

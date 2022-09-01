@@ -1,5 +1,5 @@
 export interface ICustomers {
-    name: string,
-    email: string,
-    number: number,
+  name: string;
+  email: string;
+  number: string;
 }

@@ -64,18 +64,24 @@
         width: 200px;
         height: 40px;
         border: 1px solid white;
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
         padding: 2px;
         margin: 40px;
         font-size: 18px;
         background-color: transparent;
         color: white;
       }
-      .btn-submit:hover{
+      .btn-submit:first-of-type{
+        margin-bottom: 0px;
+      }
+      .btn-submit:last-of-type{
+        margin-top: 20px;
+        background-color: #bf7138;
+      }
+      .btn-submit:first-of-type:hover{
         background-color: #363636;
-
     }
+    .btn-submit:last-of-type:hover{
+      background-color: #bd7d50;
+  }
   }
 }

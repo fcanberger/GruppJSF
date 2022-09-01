@@ -2,9 +2,9 @@ POST http://localhost:8000/app/booking
 Content-Type: application/json
 
 {
-    "AOP": "6",
+    "AOP": "3",
     "time": "nånting",
-    "customerName": "felix",
+    "customerName": "SOFIE",
     "customerEmail": "felix@mail.se",
     "customerNumber": "3432432"
 }

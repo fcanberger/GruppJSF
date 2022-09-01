@@ -5,7 +5,8 @@ const {
     showBookings,
     saveBooking,
     deleteBooking,
-    editBooking
+    editBooking,
+    checkAvailability
 } = require('../controllers/bookingController.js')
 
 const app = express.Router()
@@ -17,5 +18,7 @@ app.post('/booking', saveBooking)
 app.post('/delete', deleteBooking)
 
 app.post('/edit', editBooking)
+
+app.get('/availability', checkAvailability)
 
 module.exports = app
