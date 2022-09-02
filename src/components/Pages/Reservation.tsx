@@ -10,12 +10,13 @@ import name_icon from "../../assets/name_icon.png";
 import id_icon from "../../assets/id_icon.png";
 import { DeleteReservation } from "../DeleteReservation";
 import { AdminResContext } from "../../contexts/ReservationContext";
+import { Link } from "react-router-dom";
 
 export const Reservation = () => {
   const [adminRes, setAdminRes] = useState<IAdminRes[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [currentRes, setCurrentRes] = useState<IAdminRes>({
-    id: 0,
+    _id: "",
     AOP: "",
     date: "",
     time: 0,
@@ -24,86 +25,63 @@ export const Reservation = () => {
     customerNumber: "",
   });
 
-  const reservetionObject = useContext(AdminResContext);
+  //const reservetionObject = useContext(AdminResContext);
 
   useEffect(() => {
     if (adminRes.length !== 0) return;
     axios.get<IAdminRes[]>("http://localhost:8000/show").then((response) => {
+      console.log(response.data);
+
       setAdminRes(response.data);
     });
   });
-
-  console.log(adminRes);
-
   function handleEditInputChange(e: ChangeEvent<HTMLInputElement>) {
     setCurrentRes({ ...currentRes, [e.target.name]: e.target.value });
-    //reservetionObject.handleEditInputChange(adminRes.id);
   }
 
   function handleEditForm(e: FormEvent) {
     e.preventDefault();
 
-    handleEdit(currentRes.id, currentRes);
+    handleEdit(currentRes._id, currentRes);
   }
 
   function handleEdit(id: any, updateRes: any) {
     const updatedRes = adminRes.map((singleRes) => {
-      return singleRes.id === id ? updateRes : singleRes;
+      return singleRes._id === id ? updateRes : singleRes;
     });
     setIsEditing(false);
 
     setAdminRes(updatedRes);
-    console.log("You clicked on edit");
   }
 
   function handleEditClick(adminRes: any) {
     setIsEditing(true);
-
     setCurrentRes({ ...adminRes });
   }
 
-  console.log(currentRes);
+  function saveEdit(e: any) {
+    console.log(currentRes._id);
+    e.preventDefault();
+
+    axios.post("http://localhost:8000/edit/" + currentRes._id, {
+      AOP: currentRes.AOP,
+      date: currentRes.date,
+      time: currentRes.time,
+    });
+    setIsEditing(false);
+  }
+
   return (
     <>
       <div className="main-reservations">
         <h1>Bokningar</h1>
         <img className="blackLogo" src={blackLogo} alt="Logo" width={150} />
 
-        {isEditing ? (
-          <form onSubmit={handleEditForm}>
-            <h2>Redigera bokning för {currentRes.customerName}</h2>
-            <label htmlFor="editReservetion">Redigera bokning: </label>
-
-            <input
-              id="editReservation"
-              type="text"
-              name="AOP"
-              value={currentRes.AOP}
-              onChange={handleEditInputChange}
-            />
-            <input
-              id="editReservation"
-              type="text"
-              name="time"
-              value={currentRes.time}
-              onChange={handleEditInputChange}
-            />
-            <input
-              id="editReservation"
-              type="text"
-              name="date"
-              value={currentRes.date}
-              onChange={handleEditInputChange}
-            />
-
-            <button type="submit">Ändra</button>
-            <button onClick={() => setIsEditing(false)}>Tillbaka</button>
-          </form>
-        ) : (
+       
           <div className="reservationSection">
             {adminRes.map((singleRes) => {
               return (
-                <div className="theReservetions" key={singleRes.id}>
+                <div className="theReservetions" key={singleRes._id}>
                   <p className="customerName">
                     <img className="guestName" src={name_icon} alt="nameIcon" />
                     {singleRes.customerName}{" "}
@@ -143,12 +121,16 @@ export const Reservation = () => {
                   </p>
                   <div className="buttonSection">
                     <DeleteReservation></DeleteReservation>
-                    <button
-                      className="btn"
-                      onClick={() => handleEditClick(singleRes)}
-                    >
-                      Redigera bokning
-                    </button>
+
+                    <Link to="/edit">
+                      {" "}
+                      <button
+                        className="btn"
+                        //onClick={() => handleEditClick(singleRes)}
+                      >
+                        Redigera bokning
+                      </button>
+                    </Link>
                   </div>
                 </div>
               );
