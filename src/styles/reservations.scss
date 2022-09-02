@@ -5,4 +5,113 @@
   flex-direction: column;
   background-color: white;
   color: #1e1e1e;
+  padding: 30px;
+  .reservationSection {
+    display: flex;
+    padding: 15px;
+    .theReservetions {
+      display: flex;
+      flex-direction: column;
+      border: solid;
+      border-color: #1e1e1e6a;
+      padding: 10px;
+
+      .customerName {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        font-size: large;
+        font-weight: 600;
+        font-style: italic;
+        .guestName {
+          width: 30px;
+          padding-right: 10px;
+        }
+      }
+      .numberOfPeople {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        font-size: large;
+        font-weight: 600;
+        font-style: italic;
+        .guestIcon {
+          width: 30px;
+          padding-right: 10px;
+        }
+      }
+      .customerId {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        font-size: large;
+        font-weight: 600;
+        font-style: italic;
+        .guestId {
+          width: 30px;
+          padding-right: 10px;
+        }
+      }
+      .time {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        font-size: large;
+        font-weight: 600;
+        font-style: italic;
+        .clockIcon {
+          width: 30px;
+          padding-right: 10px;
+        }
+      }
+      .date {
+        display: flex;
+        padding: 0;
+        align-items: center;
+        margin: 0;
+        font-size: large;
+        font-weight: 600;
+        font-style: italic;
+        .dateIcon {
+          width: 30px;
+          padding-right: 10px;
+        }
+      }
+      .customerEmail {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        font-size: large;
+        font-weight: 600;
+        font-style: italic;
+        .emailIcon {
+          padding-right: 10px;
+          width: 30px;
+        }
+      }
+      .buttonSection {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 11px;
+        gap: 10px;
+        .btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+          text-decoration: none;
+          border: 1px solid white;
+          border-radius: 6px;
+          font-weight: 600;
+          background-color: #1e1e1e;
+          color: white;
+        }
+      }
+      .btn:hover {
+        background-color: #bf7138;
+        cursor: pointer;
+      }
+    }
+  }
 }

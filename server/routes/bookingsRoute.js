@@ -1,24 +1,23 @@
-const { Router } = require('express')
-const express = require('express')
+const express = require("express");
 
 const {
-    showBookings,
-    saveBooking,
-    deleteBooking,
-    editBooking,
-    checkAvailability
-} = require('../controllers/bookingController.js')
+  showBookings,
+  saveBooking,
+  deleteBooking,
+  editBooking,
+  checkAvailability,
+} = require("../controllers/bookingController.js");
 
-const app = express.Router()
+const app = express.Router();
 
-app.get('/show', showBookings)
+app.get("/show", showBookings);
 
-app.post('/booking', saveBooking)
+app.post("/booking", saveBooking);
 
-app.post('/delete', deleteBooking)
+app.post("/delete", deleteBooking);
 
-app.post('/edit', editBooking)
+app.post("/edit/:id", editBooking);
 
-app.get('/availability', checkAvailability)
+app.get("/availability", checkAvailability);
 
-module.exports = app
+module.exports = app;
