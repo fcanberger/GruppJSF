@@ -4,7 +4,7 @@ const adminResTemplate = new mongoose.Schema({
   id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Customers",
-    required: true,
+    required: false,
   },
   AOP: {
     type: Number,
