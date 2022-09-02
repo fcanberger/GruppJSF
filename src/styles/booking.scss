@@ -1,12 +1,12 @@
 .mainBooking {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
-
+  min-height: 70vh;
+  background-color: #1e1e1e;
   .datePicker {
     display: flex;
-
     div.sdp {
       background-color: rgb(148, 148, 148);
       --outline: 1px solid #a6a6a6;
