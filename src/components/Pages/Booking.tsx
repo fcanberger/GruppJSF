@@ -17,9 +17,9 @@ export const Booking = () => {
     number: "",
     email: "",
   });
-
   const [errors, setErrors] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [GDPR, setGDPR] = useState(false);
 
   useEffect(() => {
     if (date && time && amount) {
@@ -29,8 +29,8 @@ export const Booking = () => {
       console.log("TJOHO", new Date(date).toISOString().split("T")[0]);
     }
   }, [date, amount, time]);
-
-  console.log("UTANFÖR", new Date(date).toISOString().split("T")[0]);
+  console.log(GDPR);
+  // console.log("UTANFÖR", new Date(date).toISOString().split("T")[0]);
 
   const onChange = (newDate: Date) => {
     console.log(`New date selected - ${newDate.toString()}`);
@@ -105,6 +105,11 @@ export const Booking = () => {
     checkAvailable();
   };
 
+  const handleGDPR = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGDPR((prevCheck) => !prevCheck);
+    console.log(GDPR);
+  };
+
   // SET INPUT BOOKING INFORMATION
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.type === "number") {
@@ -150,6 +155,12 @@ export const Booking = () => {
     if (EmailIsValid) {
     } else {
       const text = "Du måste fylla i en giltlig epost";
+      setErrors(true);
+      setErrorMsg(text);
+      return;
+    }
+    if (GDPR == !true) {
+      const text = "Du måste godkänna att vi får spara dina uppgifter";
       setErrors(true);
       setErrorMsg(text);
       return;
@@ -280,6 +291,22 @@ export const Booking = () => {
             required
           ></input>
           <br></br>
+          <div className="gdpr-container">
+            <input
+              type="checkbox"
+              id="gdpr"
+              name="gdpr"
+              value="check"
+              // checked={handleGDPR == true}
+              onChange={handleGDPR}
+            ></input>
+             
+            <label>
+              Du godkänner att vi enligt GDPR får spara dina uppgiter i samband
+              med bokning
+            </label>
+          </div>
+          <br></br>
           {errors && errorMsg ? (
             <div className="error-msg">
               <p>{errorMsg}</p>
@@ -287,6 +314,26 @@ export const Booking = () => {
           ) : (
             ""
           )}
+          {/* {showGDPR ? (
+            <div className="gdpr-container">
+              <input
+                type="radio"
+                id="gdpr"
+                name="gdpr"
+                value="gdpr"
+                // checked={time == "1800"}
+                // onChange={handleTime}
+              ></input>
+               
+              <label>
+                Du godkänner att vi enligt GDPR får spara dina uppgiter i
+                samband med bokning
+              </label>
+              <br></br>
+            </div>
+          ) : (
+            ""
+          )} */}
           <button className="btn-submit" onClick={handleCancel}>
             Avbryt
           </button>
