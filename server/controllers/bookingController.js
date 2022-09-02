@@ -12,11 +12,13 @@ const showBookings = async (req, res) => {
 // Spara bokning
 
 const saveBooking = async (req, res) => {
+  console.log('starting')
   const { AOP, date, time, customerName, customerEmail, customerNumber } =
     req.body;
 
+    console.log("have values:" , req.body)
+    
   // Ny bokning till mongoose
-
   const newBooking = await adminRes.create({
     AOP: AOP,
     date: date,
@@ -25,14 +27,8 @@ const saveBooking = async (req, res) => {
     customerEmail: customerEmail,
     customerNumber: customerNumber,
   });
-  newBooking
-    .save()
-    .then((data) => {
-      res.json(data);
-    })
-    .catch((error) => {
-      res.json(error);
-    });
+  console.log("newBooking", newBooking);
+  res.status(200).send(newBooking)
 };
 
 // Ta bort boking som admin
