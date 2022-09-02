@@ -1,15 +1,19 @@
 const booking = require('../models/BookingsModels')
 const adminRes = require('../models/adminResModels');
+const app = require('../routes/bookingsRoute');
 
 // Visa bokningar
 
 const showBookings = async (req, res) => {
     const booking = await adminRes.find();
+    res.status(200).send(booking);
+
 }
 
 // Spara bokning
 
 const saveBooking = async (req, res) => {
+    console.log("Starting");
     const {
         AOP,
         date,
@@ -19,16 +23,22 @@ const saveBooking = async (req, res) => {
         customerNumber,
     } = req.body
 
-// Ny bokning till mongoose
+    console.log("Have values:", req.body);
 
-const newBooking = await adminRes.create({
-    AOP: AOP,
-    date: date,
-    time: time,
-    customerName: customerName,
-    customerEmail: customerEmail,
-    customerNumber: customerNumber,
-})
+    // Ny bokning till mongoose
+
+    const newBooking = await adminRes.create({
+        AOP: AOP,
+        date: date,
+        time: time,
+        customerName: customerName,
+        customerEmail: customerEmail,
+        customerNumber: customerNumber,
+    });
+
+    console.log("NewBooking", newBooking);
+
+    res.status(200).send(newBooking);
 }
 
 // Ta bort boking som admin
@@ -59,4 +69,12 @@ const editBooking = async (req, res) => {
     )
 }
 
-module.exports = { showBookings, saveBooking, deleteBooking, editBooking }
+// Check availability 
+const checkAvailability = async (req,res) => {
+    const availability = await adminRes.find();
+    console.log(availability)
+    
+    res.status(200).send(availability)
+}
+
+module.exports = { showBookings, saveBooking, deleteBooking, editBooking, checkAvailability }

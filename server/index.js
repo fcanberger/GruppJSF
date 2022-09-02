@@ -12,7 +12,7 @@ mongoose.connect(process.env.CONNECTION_STRING, () => console.log('Database conn
 
 app.use(express.json())
 app.use(cors())
-app.use('/app', bookingRoute)
+app.use('/', bookingRoute)
 app.listen(8000, () => {
     console.log("http://localhost:8000");
   });
