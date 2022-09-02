@@ -15,7 +15,9 @@ export const Home = () => {
         {/* <img src={hero} alt="hero image" height={200} width={500} /> */}
         <div className="booking-container">
           <h2 className="Welcome-text">Välkommen till </h2>
-          <img src={whiteLogo} alt="Logo" width={400} />
+          <img className="white-logo" src={whiteLogo} alt="Logo" width={370} />
+          {/* <div className="white-logo"></div> */}
+
           <div className="text-div-booking">
             <p>
               Varmt välkomna att boka bord hoss oss via vår bokningsida som ni
@@ -57,7 +59,7 @@ export const Home = () => {
             <p>Lördag: 12.00 - 01.00</p>
             <p>Söndag: 12.00 - 23.00</p>
           </div>
-          <div className="opening-image-container"></div>
+          {/* <div className="opening-image-container"></div> */}
         </div>
 
         <div className="meny-container">

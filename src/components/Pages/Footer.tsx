@@ -8,26 +8,27 @@ export const Footer = () => {
       <p>Epost: info@buonamascella.se</p>
       <p>Adress: Gott käk 10, Stockholm</p>
       <div className="media-icons-container">
-        <p>Facebook icon</p>
-        <p>Instagram icon</p>
+        <a href="http://www.facebook.com">
+          <img
+            className="media-icon"
+            src={facebook}
+            alt="tomato pasta"
+            width={30}
+          />
+        </a>
+        <a href="http://instagram.com">
+          <img
+            className="media-icon"
+            src={instagram}
+            alt="tomato pasta"
+            width={30}
+          />
+        </a>
       </div>
-      <Link to="/admin">Logga in personal</Link>
-      <a href="http://www.facebook.com">
-        <img
-          className="media-icon"
-          src={facebook}
-          alt="tomato pasta"
-          width={30}
-        />
-      </a>
-      <a href="http://instagram.com">
-        <img
-          className="media-icon"
-          src={instagram}
-          alt="tomato pasta"
-          width={30}
-        />
-      </a>
+      <Link to="/admin" className="admin">
+        Logga in som personal
+      </Link>
+
       <p>Copyright 2022 | buona mascella</p>
     </footer>
   );
