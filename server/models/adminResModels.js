@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
 const adminResTemplate = new mongoose.Schema({
+  id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Customers",
+    required: true,
+  },
   AOP: {
     type: Number,
     required: true,

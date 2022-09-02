@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import blackLogo from "../../assets/blackLogo.png";
 import { IAdminRes } from "../../models/IAdminRes";
 import guestIcon from "../../assets/guestIcon.png";
@@ -14,34 +14,41 @@ import { AdminResContext } from "../../contexts/ReservationContext";
 export const Reservation = () => {
   const [adminRes, setAdminRes] = useState<IAdminRes[]>([]);
   const [isEditing, setIsEditing] = useState(false);
-  const [currentRes, setCurrentRes] = useState({});
+  const [currentRes, setCurrentRes] = useState<IAdminRes>({
+    id: 0,
+    AOP: "",
+    date: "",
+    time: 0,
+    customerName: "",
+    customerEmail: "",
+    customerNumber: "",
+  });
 
   const reservetionObject = useContext(AdminResContext);
 
   useEffect(() => {
     if (adminRes.length !== 0) return;
-    axios.get("http://localhost:8000/show").then((response) => {
+    axios.get<IAdminRes[]>("http://localhost:8000/show").then((response) => {
       setAdminRes(response.data);
     });
   });
 
   console.log(adminRes);
 
-  function handleEditInputChange(e: any) {
-    setCurrentRes({ ...currentRes, text: e.target.value });
-    reservetionObject.handleEditInputChange(parseInt(adminRes.id));
-    console.log(currentRes);
+  function handleEditInputChange(e: ChangeEvent<HTMLInputElement>) {
+    setCurrentRes({ ...currentRes, [e.target.name]: e.target.value });
+    //reservetionObject.handleEditInputChange(adminRes.id);
   }
 
-  function handleEditForm(e: any) {
-    e.preventdefault();
+  function handleEditForm(e: FormEvent) {
+    e.preventDefault();
 
     handleEdit(currentRes.id, currentRes);
   }
 
   function handleEdit(id: any, updateRes: any) {
-    const updatedRes = adminRes.map((adminRes) => {
-      return adminRes.id === id ? updateRes : adminRes;
+    const updatedRes = adminRes.map((singleRes) => {
+      return singleRes.id === id ? updateRes : singleRes;
     });
     setIsEditing(false);
 
@@ -54,6 +61,8 @@ export const Reservation = () => {
 
     setCurrentRes({ ...adminRes });
   }
+
+  console.log(currentRes);
   return (
     <>
       <div className="main-reservations">
@@ -62,31 +71,46 @@ export const Reservation = () => {
 
         {isEditing ? (
           <form onSubmit={handleEditForm}>
-            <h2>Redigera bokning</h2>
+            <h2>Redigera bokning för {currentRes.customerName}</h2>
             <label htmlFor="editReservetion">Redigera bokning: </label>
 
             <input
-              name="editReservetion"
+              id="editReservation"
               type="text"
-              placeholder="Redigera bokning"
+              name="AOP"
+              value={currentRes.AOP}
               onChange={handleEditInputChange}
             />
-            {/* ska vara efter text i input value={currentRes.text} */}
+            <input
+              id="editReservation"
+              type="text"
+              name="time"
+              value={currentRes.time}
+              onChange={handleEditInputChange}
+            />
+            <input
+              id="editReservation"
+              type="text"
+              name="date"
+              value={currentRes.date}
+              onChange={handleEditInputChange}
+            />
+
             <button type="submit">Ändra</button>
             <button onClick={() => setIsEditing(false)}>Tillbaka</button>
           </form>
         ) : (
           <div className="reservationSection">
-            {adminRes.map((adminRes) => {
+            {adminRes.map((singleRes) => {
               return (
-                <div className="theReservetions" key={adminRes.id}>
+                <div className="theReservetions" key={singleRes.id}>
                   <p className="customerName">
                     <img className="guestName" src={name_icon} alt="nameIcon" />
-                    {adminRes.customerName}{" "}
+                    {singleRes.customerName}{" "}
                   </p>
                   <p className="customerId">
                     <img className="guestId" src={id_icon} alt="nameIcon" />{" "}
-                    {adminRes.customerNumber}
+                    {singleRes.customerNumber}
                   </p>
                   <p className="numberOfPeople">
                     <img
@@ -94,7 +118,7 @@ export const Reservation = () => {
                       src={guestIcon}
                       alt="guestIcon"
                     />
-                    {adminRes.AOP} personer
+                    {singleRes.AOP} personer
                   </p>
 
                   <p className="time">
@@ -103,7 +127,7 @@ export const Reservation = () => {
                       src={clock_icon}
                       alt="clockIcon"
                     />
-                    {adminRes.time}
+                    {singleRes.time}
                   </p>
                   <p className="date">
                     <img
@@ -111,17 +135,17 @@ export const Reservation = () => {
                       src={calender_icon}
                       alt="guestIcon"
                     />
-                    {adminRes.date}
+                    {singleRes.date}
                   </p>
                   <p className="customerEmail">
                     <img className="emailIcon" src={mailIcon} alt="guestIcon" />
-                    {adminRes.customerEmail}
+                    {singleRes.customerEmail}
                   </p>
                   <div className="buttonSection">
                     <DeleteReservation></DeleteReservation>
                     <button
                       className="btn"
-                      onClick={() => handleEditClick(adminRes)}
+                      onClick={() => handleEditClick(singleRes)}
                     >
                       Redigera bokning
                     </button>

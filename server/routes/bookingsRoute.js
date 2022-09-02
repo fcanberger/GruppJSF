@@ -15,6 +15,6 @@ app.post("/booking", saveBooking);
 
 app.post("/delete", deleteBooking);
 
-app.post("/edit", editBooking);
+app.post("/edit/:id", editBooking);
 
 module.exports = app;

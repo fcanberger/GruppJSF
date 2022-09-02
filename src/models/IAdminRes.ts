@@ -1,8 +1,8 @@
 export interface IAdminRes {
-  id: string;
+  id?: number;
   AOP: string;
   date: string;
-  time: String;
+  time: number;
   customerName: String;
   customerEmail: String;
   customerNumber: string;
