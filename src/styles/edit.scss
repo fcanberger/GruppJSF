@@ -1,0 +1,50 @@
+.mainEditSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  color: #1e1e1e;
+  padding: 90px;
+  .editButtonSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 11px;
+    gap: 10px;
+    .editBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      text-decoration: none;
+      border: 1px solid white;
+      border-radius: 6px;
+      font-weight: 600;
+      background-color: #1e1e1e;
+      color: white;
+    }
+    .editBackBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid white;
+      border-radius: 6px;
+      font-weight: 600;
+      background-color: #1e1e1e;
+    }
+    .editLink {
+      text-decoration: none;
+      color: white;
+    }
+  }
+  .editBackBtn:hover {
+    background-color: #bf7138;
+    cursor: pointer;
+  }
+  .editBtn:hover {
+    background-color: #bf7138;
+    cursor: pointer;
+  }
+}

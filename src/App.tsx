@@ -10,6 +10,7 @@ import { Contact } from "./components/Pages/Contact";
 import { Admin } from "./components/Pages/Admin";
 import { Reservation } from "./components/Pages/Reservation";
 import { Footer } from "./components/Pages/Footer";
+import { Edit } from "./components/Edit";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
           <Route path="/Reservation" element={<Reservation />}></Route>
+          <Route path="/Edit/:id" element={<Edit />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
