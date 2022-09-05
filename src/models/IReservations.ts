@@ -1,6 +1,6 @@
 export interface IReservations {
   id?: string;
-  date: Date;
+  date: string;
   time: string;
   AOP: number;
   customerName: string;

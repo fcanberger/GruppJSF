@@ -1,12 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { IBooking } from "../../models/IBooking";
 import { ICustomers } from "../../models/ICustomers";
 import DatePicker from "sassy-datepicker";
 import { IReservations } from "../../models/IReservations";
-import { timeEnd } from "console";
 
 export const Booking = () => {
+  // STATES
   const [date, setDate] = useState(new Date());
   const [showTime, setShowTime] = useState(false);
   const [bookingForm, setBookingForm] = useState(false);
@@ -18,34 +17,49 @@ export const Booking = () => {
     email: "",
   });
   const [errors, setErrors] = useState(false);
+  const [dateError, setDateError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [GDPR, setGDPR] = useState(false);
 
+  // IF DATE, TIME, AMOUNT IS CHOOSEN
   useEffect(() => {
     if (date && time && amount) {
       // setBookingForm(true);
       checkAvailable();
 
-      console.log("TJOHO", new Date(date).toISOString().split("T")[0]);
+      console.log("TOISOSTRING", new Date(date).toISOString().split("T")[0]);
+      console.log("NEWDATE(DATE)", new Date(date));
     }
   }, [date, amount, time]);
-  console.log(GDPR);
-  // console.log("UTANFÖR", new Date(date).toISOString().split("T")[0]);
 
+  // DATEPICKER - CHECK IF DATE HAS BEEN PASSED OR SET CHOOSEN DATE
   const onChange = (newDate: Date) => {
     console.log(`New date selected - ${newDate.toString()}`);
-    setDate(newDate);
-    setShowTime(true);
+    var today = new Date(new Date().toString().substring(0, 15));
+    console.log(newDate < today);
+    if (newDate < today === false) {
+      setDateError(false);
+      setErrorMsg("");
+      setDate(newDate);
+      setShowTime(true);
+    } else {
+      const text = "Datumet du valt har redan passerat";
+      setDateError(true);
+      setErrorMsg(text);
+      setShowTime(false);
+      setBookingForm(false);
+    }
   };
 
-  //FETCH BOOKINGS AND CHECK AVALIBE
+  //GET BOOKINGS AND CHECK AVAILABLE
   const checkAvailable = () => {
-    console.log("check avalible");
     axios
       .get("http://localhost:8000/availability")
       .then((response) => {
         const currentDate = new Date(date).toISOString().split("T")[0];
         console.log("tid från DB:", response.data);
+
+        // COMPARE BOOKINGS - MAKE A NEW ARRAY WITH BOOKINGS MATCHING CURRENT DATE & TIME
         const compareDateAndTime = response.data.filter(
           (booking: { date: string; time: string }) => {
             return (
@@ -56,6 +70,7 @@ export const Booking = () => {
         );
         console.log("matched date and time", compareDateAndTime);
 
+        // IF THERE IS LESS OR 15 RESERVATIONS
         if (compareDateAndTime.length <= 15) {
           setErrors(false);
           setBookingForm(true);
@@ -67,50 +82,31 @@ export const Booking = () => {
           setErrorMsg(text);
           setBookingForm(false);
         }
-        // for (let i = 0; i < response.data.length; i++) {
-        //   if (currentDate === response.data[i].date.split("T")[0]) {
-        //     console.log(
-        //       "samma lika datum",
-        //       currentDate + "och" + response.data[i].date.split("T")[0]
-        //     );
-        //     if (time === response.data[i].time) {
-        //       console.log("samma tid:", time, "och", response.data[i].time);
-        //       console.log(response);
-        //       if (response.data.length >= 15) {
-        //         console.log("det är fullt");
-        //       } else {
-        //         console.log("det finns bord");
-        //       }
-        //     }
-        //   }
-
-        // }
-        // }
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  // HANDLE RADIOBUTTON
+  // HANDLE RADIOBUTTON - SET TIME
   const handleTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     const choosenTime = e.target.value;
     setTime(choosenTime);
   };
 
-  // HANDLE AMOUNT
+  // HANDLE/SET AMOUNT OF PEOPLE STATE
   const handleAmount = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const amountNumber = parseInt(e.target.value);
     setAmount(amountNumber);
     checkAvailable();
   };
 
+  // SET GDPR CHECKBOX
   const handleGDPR = (e: React.ChangeEvent<HTMLInputElement>) => {
     setGDPR((prevCheck) => !prevCheck);
-    console.log(GDPR);
   };
 
-  // SET INPUT BOOKING INFORMATION
+  // SET INPUT BOOKINGINFORMATION  STATE
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.type === "number") {
       setBookingInfoCustomer({
@@ -125,7 +121,7 @@ export const Booking = () => {
     }
   };
 
-  // HANDLE SUBMIT AND VALIDATION
+  // HANDLE SUBMIT AND VALIDATION - ERROR MSG
   const handleSubmit = () => {
     console.log(date);
     console.log("on submit", new Date(date).toISOString().split("T")[0]);
@@ -160,7 +156,8 @@ export const Booking = () => {
       return;
     }
     if (GDPR == !true) {
-      const text = "Du måste godkänna att vi får spara dina uppgifter";
+      const text =
+        "Du måste godkänna att vi får spara dina uppgifter i syfta att kunna hantera din bokning";
       setErrors(true);
       setErrorMsg(text);
       return;
@@ -171,14 +168,14 @@ export const Booking = () => {
     createBooking();
   };
 
-  // CREATE NEW BOOKING
+  // CREATE NEW BOOKING - AXIOS.POST
   const createBooking = () => {
     // registered customer
     const newBooking: IReservations = {
       customerName: bookingInfoCustomer.name,
       customerNumber: bookingInfoCustomer.number,
       customerEmail: bookingInfoCustomer.email,
-      date: date,
+      date: date.toLocaleDateString(),
       time: time,
       AOP: amount,
     };
@@ -192,11 +189,13 @@ export const Booking = () => {
       });
   };
 
+  // HANDLE CANCEL BTN
   const handleCancel = () => {
     setShowTime(false);
     setBookingForm(false);
   };
 
+  // TIME AND AMOUNT INPUTS
   const TimeAndAmount = () => (
     <div id="results" className="time-results">
       <input
@@ -239,6 +238,7 @@ export const Booking = () => {
     </div>
   );
 
+  // RETURN
   return (
     <div className="mainBooking">
       <h1>Här bokar du bord</h1>
@@ -250,14 +250,15 @@ export const Booking = () => {
         />
       </div>
       <br></br>
-      {showTime ? <TimeAndAmount /> : null}
-      {errors && errorMsg ? (
+      {dateError && errorMsg ? (
         <div className="error-msg">
           <p>{errorMsg}</p>
         </div>
       ) : (
         ""
       )}
+      {showTime ? <TimeAndAmount /> : null}
+
       {bookingForm ? (
         <div className="bookings">
           <br></br>
@@ -301,9 +302,9 @@ export const Booking = () => {
               onChange={handleGDPR}
             ></input>
              
-            <label>
-              Du godkänner att vi enligt GDPR får spara dina uppgiter i samband
-              med bokning
+            <label className="gdpr">
+              Du godkänner att vi enligt GDPR får spara dina uppgiter i syfta
+              att kunna hantera din bokning
             </label>
           </div>
           <br></br>
@@ -314,31 +315,12 @@ export const Booking = () => {
           ) : (
             ""
           )}
-          {/* {showGDPR ? (
-            <div className="gdpr-container">
-              <input
-                type="radio"
-                id="gdpr"
-                name="gdpr"
-                value="gdpr"
-                // checked={time == "1800"}
-                // onChange={handleTime}
-              ></input>
-               
-              <label>
-                Du godkänner att vi enligt GDPR får spara dina uppgiter i
-                samband med bokning
-              </label>
-              <br></br>
-            </div>
-          ) : (
-            ""
-          )} */}
-          <button className="btn-submit" onClick={handleCancel}>
-            Avbryt
-          </button>
+
           <button className="btn-submit" onClick={handleSubmit}>
             Bekräfta
+          </button>
+          <button className="btn-submit" onClick={handleCancel}>
+            Avbryt
           </button>
         </div>
       ) : null}

@@ -72,16 +72,30 @@
       }
       .btn-submit:first-of-type{
         margin-bottom: 0px;
+        background-color: #bf7138;
+
       }
       .btn-submit:last-of-type{
         margin-top: 20px;
-        background-color: #bf7138;
       }
       .btn-submit:first-of-type:hover{
-        background-color: #363636;
+        background-color: #bd7d50;
+
     }
     .btn-submit:last-of-type:hover{
-      background-color: #bd7d50;
+      background-color: #363636;
+
   }
+  .gdpr-container{
+    margin: 0px 10px;
+    .gdpr{
+      font-size: 1rem;
+    }
+  }
+  }
+  .error-msg{
+    p{
+     color:rgb(182, 38, 38);
+    }
   }
 }
