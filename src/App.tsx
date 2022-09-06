@@ -11,6 +11,8 @@ import { Admin } from "./components/Pages/Admin";
 import { Reservation } from "./components/Pages/Reservation";
 import { NotFound } from "./components/Pages/NotFound";
 import { Footer } from "./components/Pages/Footer";
+import { ErrorBooking } from "./components/Pages/ErrorBooking";
+import { Thanks } from "./components/Pages/Thanks";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/error-booking" element={<ErrorBooking />}></Route>
+          <Route path="/thanks" element={<Thanks />}></Route>
           <Route path="/Reservation" element={<Reservation />}></Route>
         </Route>
       </Routes>
