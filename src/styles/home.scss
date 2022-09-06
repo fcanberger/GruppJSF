@@ -1,3 +1,4 @@
+
 .hero-image {
   background-image: url(../assets/hero-mobile.jpg);
   width: 100%;
@@ -39,7 +40,8 @@
       padding-top: 50px;
     }
     p {
-      margin: 5px;
+      margin: 10px;
+      padding: 0px 40px;
     }
     .btn-booking {
       width: 100px;
@@ -137,13 +139,7 @@
 
       }
     }
-    // .opening-image-container {
-    //   background-image: url(../assets/people-mobile.jpg);
-    //   background-repeat: no-repeat;
-    //   margin: 20px 0px;
-    //   height: 400px;
-    //   width: 100%;
-    // }
+
   }
   .meny-container {
     background-color: #f0f0f0;
@@ -152,6 +148,18 @@
     align-items: center;
     width: 100%;
     // height: 500px;
+    p {
+      color: #1e1e1e;
+      margin: 10px;
+      padding: 0px 40px;
+      text-align: center;
+    }
+    p:first-of-type{
+      font-style: italic;
+    }
+    p:last-of-type{
+      margin-bottom: 40px;
+    }
     .meny-images-container {
       max-width: 800px;
       // padding: 15px;
@@ -178,12 +186,7 @@
         background-position: center;
       }
     }
-    p {
-      color: #1e1e1e;
-      padding: 25px;
-      margin: 0px;
-      text-align: center;
-    }
+
     .btn-meny {
       width: 100px;
       height: 30px;
@@ -279,14 +282,8 @@
         }
       }
     }
-    // .opening-hours-container {
-    //   display: flex;
-    //   flex-direction: row;
-    //   justify-content: space-between;
-    //   align-items: center;
-    //   max-width: 800px;
+
       .opening-info {
-        // margin-left: 70px;
         h4 {
           font-size: 24px;
           margin: 5px 0px;
@@ -295,17 +292,15 @@
           font-size: 18px;
         }
       }
-      // .opening-image-container {
-      //   background-image: url(../assets/twopeople.jpg);
-      //   background-repeat: no-repeat;
-      //   margin: 20px 0px;
-      //   height: 300px;
-      //   width: 400px;
-      // }
-    // }
     .meny-container {
       background-color: white;
-
+      p {
+        color: #1e1e1e;
+        padding: 5px 60px;
+        margin: 0px;
+        text-align: center;
+        font-size: 1rem;
+      }
       .meny-images-container {
         max-width: 800px;
         display: flex;
@@ -323,12 +318,7 @@
           background-position: center;
         }
       }
-      p {
-        color: #1e1e1e;
-        padding: 25px;
-        margin: 0px;
-        text-align: center;
-      }
+  
     }
     footer {
       p {
@@ -371,7 +361,7 @@
   .wrapper-home {
     .booking-container {
       p {
-        font-size: 20px;
+        font-size: 1rem;
       }
       .btn-booking {
         width: 150px;
@@ -433,8 +423,10 @@
     }
     .meny-container {
       padding-bottom: 40px;
+      width: auto;
       p {
-        font-size: 20px;
+        font-size: 1rem;
+        margin: 0px 120px;
       }
       .btn-meny {
         width: 150px;
@@ -456,7 +448,7 @@
           font-size: 30px;
         }
         p {
-          font-size: 20px;
+          font-size: 1rem;
         }
       }
       .opening-image-container {
