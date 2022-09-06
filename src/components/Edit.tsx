@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { IAdminRes } from "../models/IAdminRes";
 
 export const Edit = () => {
@@ -17,6 +17,7 @@ export const Edit = () => {
   });
 
   let params = useParams();
+  let navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -45,10 +46,12 @@ export const Edit = () => {
   function handleEditForm(e: FormEvent) {
     e.preventDefault();
 
-    handleEdit(currentRes._id, currentRes);
+    if (currentRes._id) {
+      handleEdit(currentRes._id, currentRes);
+    }
   }
 
-  function handleEdit(id: any, updateRes: any) {
+  function handleEdit(id: string, updateRes: IAdminRes) {
     const updatedRes = adminRes.map((singleRes) => {
       return singleRes._id === id ? updateRes : singleRes;
     });
@@ -62,20 +65,19 @@ export const Edit = () => {
     setCurrentRes({ ...currentRes, [e.target.name]: e.target.value });
   }
 
-  function handleEditClick(adminRes: any) {
-    setEdit(true);
-    setCurrentRes({ ...adminRes, adminRes });
-  }
-
   function saveEdit(e: any) {
     console.log(currentRes._id);
     e.preventDefault();
 
-    axios.put("http://localhost:8000/edit/" + currentRes._id, {
-      AOP: currentRes.AOP,
-      date: currentRes.date,
-      time: currentRes.time,
-    });
+    axios
+      .put("http://localhost:8000/edit/" + currentRes._id, {
+        AOP: currentRes.AOP,
+        date: currentRes.date,
+        time: currentRes.time,
+      })
+      .then((response) => {
+        navigate("/Reservation");
+      });
     setEdit(false);
   }
   return (
@@ -112,15 +114,10 @@ export const Edit = () => {
                 Ändra
               </Link>
             </button>
-            <button className="editBackBtn">
-              <Link
-                className="editLink"
-                to={"/Reservation"}
-                onClick={handleEditClick}
-              >
-                Tillbaka
-              </Link>
-            </button>
+
+            <Link className="editBackBtn" to={"/Reservation"}>
+              Tillbaka
+            </Link>
           </div>
         </form>
 

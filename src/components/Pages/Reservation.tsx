@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import blackLogo from "../../assets/blackLogo.png";
 import { IAdminRes } from "../../models/IAdminRes";
 import guestIcon from "../../assets/guestIcon.png";
@@ -22,10 +22,9 @@ export const Reservation = () => {
     });
   }, []);
 
-  function handleDelete(e: any) {
+  function handleDelete(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    const id = e.target.value;
-
+    const id = (e.target as HTMLInputElement).value;
     axios.delete("http://localhost:8000/delete/" + id).then((response) => {
       console.log("REMOVED", response);
       //set reservetions - set new res in front end that shows when res.id deleted
@@ -75,8 +74,8 @@ export const Reservation = () => {
                 <div className="buttonSection">
                   <button
                     value={singleRes._id}
-                    className="btn"
                     onClick={handleDelete}
+                    className="btn"
                     type="button"
                   >
                     Ta bort bokning
