@@ -8,11 +8,23 @@ import calender_icon from "../../assets/calender_icon.png";
 import mailIcon from "../../assets/mailIcon.png";
 import name_icon from "../../assets/name_icon.png";
 import id_icon from "../../assets/id_icon.png";
-
-import { Link } from "react-router-dom";
+import { DeleteReservation } from "../DeleteReservation";
+import { Link, useParams } from "react-router-dom";
+import { Edit } from "../Edit";
 
 export const Reservation = () => {
   const [adminRes, setAdminRes] = useState<IAdminRes[]>([]);
+  const [currentRes, setCurrentRes] = useState<IAdminRes>({
+    _id: "",
+    AOP: "",
+    date: "",
+    time: 0,
+    customerName: "",
+    customerEmail: "",
+    customerNumber: "",
+  });
+
+  //const reservetionObject = useContext(AdminResContext);
 
   useEffect(() => {
     if (adminRes.length !== 0) return;
