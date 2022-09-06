@@ -27,8 +27,9 @@ export const Home = () => {
               Vill ni boka bord för fler än 6 personer, vänligen kontakta oss.
             </p>
             <p>
-              Behöver ni avboka ser vi gärna att ni gör det innan 15.00 samma
-              dag.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
+              iure, sit facere eaque error numquam dolores tempore quibusdam cum
+              autem quidem nemo tempora molestias aperiam? Nobis maiores.
             </p>
           </div>
           <div className="btn-booking">
@@ -67,7 +68,18 @@ export const Home = () => {
             <div className="image-six"></div>
             <div className="image-seven"></div>
           </div>
-          <p>Vi erbjuder er det bästa käket från det italienska köket</p>
+          <p>Vi erbjuder er det bästa käket från det italienska köket.</p>
+          <p>
+            Maten bygger på enkelhet, kvalitet och tradition. Vår färska pasta
+            är egentillverkad på farmors vis och alla våra rätter tillagas med
+            hållbara råvaror från småskaliga och större italienska och svenska
+            producenter.
+          </p>
+          <p>
+            Långsiktighet är något vi förespråkar konstant. Vi anser att det
+            inte spelar någon roll om råvarorna är av högsta kvalité om inte den
+            tillagas med passion och kärlek.
+          </p>
           <div className="btn-meny">
             <Link to="/meny">Meny</Link>
           </div>

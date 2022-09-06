@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ICustomers } from "../../models/ICustomers";
 import DatePicker from "sassy-datepicker";
 import { IReservations } from "../../models/IReservations";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Booking = () => {
   // STATES
@@ -20,6 +21,9 @@ export const Booking = () => {
   const [dateError, setDateError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [GDPR, setGDPR] = useState(false);
+
+  //USENAVIGATE
+  const navigate = useNavigate();
 
   // IF DATE, TIME, AMOUNT IS CHOOSEN
   useEffect(() => {
@@ -183,9 +187,11 @@ export const Booking = () => {
       .post("http://localhost:8000/booking", newBooking)
       .then((response) => {
         console.log("axios - response.data", response.data);
+        navigate("/thanks", { replace: true });
       })
       .catch((error) => {
-        console.log(error);
+        console.log("error", error);
+        <Link to="/error-booking"></Link>;
       });
   };
 
