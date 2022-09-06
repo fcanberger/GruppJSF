@@ -71,11 +71,12 @@ export const Edit = () => {
     console.log(currentRes._id);
     e.preventDefault();
 
-    axios.post("http://localhost:8000/edit/" + currentRes._id, {
+    axios.put("http://localhost:8000/edit/" + currentRes._id, {
       AOP: currentRes.AOP,
       date: currentRes.date,
       time: currentRes.time,
     });
+    console.log(currentRes.AOP, currentRes.date);
     setEdit(false);
   }
   return (
