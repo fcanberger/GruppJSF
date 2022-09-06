@@ -57,7 +57,7 @@ const editBooking = async (req, res) => {
       customerNumber: req.body.customerNumber,
     }
   );
-  res.redirect("http://localhost:3000/Reservation");
+  // res.redirect("http://localhost:3000/Reservation");
 };
 
 // Check availability

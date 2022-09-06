@@ -9,11 +9,20 @@ import mailIcon from "../../assets/mailIcon.png";
 import name_icon from "../../assets/name_icon.png";
 import id_icon from "../../assets/id_icon.png";
 import { DeleteReservation } from "../DeleteReservation";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Edit } from "../Edit";
 
 export const Reservation = () => {
   const [adminRes, setAdminRes] = useState<IAdminRes[]>([]);
+  const [currentRes, setCurrentRes] = useState<IAdminRes>({
+    _id: "",
+    AOP: "",
+    date: "",
+    time: 0,
+    customerName: "",
+    customerEmail: "",
+    customerNumber: "",
+  });
 
   //const reservetionObject = useContext(AdminResContext);
 
@@ -24,7 +33,17 @@ export const Reservation = () => {
 
       setAdminRes(response.data);
     });
-  });
+  }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .get<IAdminRes[]>(`http://localhost:8000/show/${currentRes._id}`)
+  //     .then((response) => {
+  //       console.log(response.data);
+
+  //       setAdminRes(response.data);
+  //     });
+  // }, []);
 
   return (
     <>
@@ -59,7 +78,7 @@ export const Reservation = () => {
                     src={calender_icon}
                     alt="guestIcon"
                   />
-                  {singleRes.date}
+                  {singleRes.date.split("T")[0]}
                 </p>
                 <p className="customerEmail">
                   <img className="emailIcon" src={mailIcon} alt="guestIcon" />

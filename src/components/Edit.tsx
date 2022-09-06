@@ -1,12 +1,11 @@
 import axios from "axios";
-import { ChangeEvent, FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { IAdminRes } from "../models/IAdminRes";
-import { Reservation } from "./Pages/Reservation";
 
 export const Edit = () => {
   const [adminRes, setAdminRes] = useState<IAdminRes[]>([]);
-  const [isEditing, setIsEditing] = useState(false);
+  const [edit, setEdit] = useState(false);
   const [currentRes, setCurrentRes] = useState<IAdminRes>({
     _id: "",
     AOP: "",
@@ -15,6 +14,32 @@ export const Edit = () => {
     customerName: "",
     customerEmail: "",
     customerNumber: "",
+  });
+
+  let params = useParams();
+
+  useEffect(() => {
+    axios
+      .get<IAdminRes[]>(`http://localhost:8000/show/${currentRes._id}`)
+      .then((response) => {
+        console.log("response data: ", response.data);
+
+        for (let i = 0; i < response.data.length; i++) {
+          if (params.id === response.data[i]._id) {
+            console.log("parmas id matchar med response id");
+            setCurrentRes(response.data[i]);
+          }
+        }
+        setAdminRes(response.data);
+      });
+  }, [params]);
+
+  useEffect(() => {
+    console.log(
+      currentRes.date,
+      currentRes.customerName,
+      currentRes.customerEmail
+    );
   });
 
   function handleEditForm(e: FormEvent) {
@@ -27,18 +52,19 @@ export const Edit = () => {
     const updatedRes = adminRes.map((singleRes) => {
       return singleRes._id === id ? updateRes : singleRes;
     });
-    setIsEditing(false);
+    setEdit(false);
 
     setAdminRes(updatedRes);
   }
 
   //Edit reservetions Inputs
   function handleEditInputChange(e: ChangeEvent<HTMLInputElement>) {
-    if (e.target.type === "number") {
-      setCurrentRes({ ...currentRes, [e.target.name]: +e.target.value });
-    } else {
-      setCurrentRes({ ...currentRes, [e.target.name]: +e.target.value });
-    }
+    setCurrentRes({ ...currentRes, [e.target.name]: e.target.value });
+  }
+
+  function handleEditClick(adminRes: any) {
+    setEdit(true);
+    setCurrentRes({ ...adminRes, adminRes });
   }
 
   function saveEdit(e: any) {
@@ -50,7 +76,7 @@ export const Edit = () => {
       date: currentRes.date,
       time: currentRes.time,
     });
-    setIsEditing(false);
+    setEdit(false);
   }
   return (
     <>
@@ -77,7 +103,7 @@ export const Edit = () => {
             id="editReservation"
             type="text"
             name="date"
-            value={currentRes.date}
+            value={currentRes.date.split("T")[0]}
             onChange={handleEditInputChange}
           />
           <div className="editButtonSection">
@@ -87,7 +113,11 @@ export const Edit = () => {
               </Link>
             </button>
             <button className="editBackBtn">
-              <Link className="editLink" to={"/Reservation"}>
+              <Link
+                className="editLink"
+                to={"/Reservation"}
+                onClick={handleEditClick}
+              >
                 Tillbaka
               </Link>
             </button>
