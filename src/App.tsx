@@ -11,6 +11,7 @@ import { Admin } from "./components/Pages/Admin";
 import { Reservation } from "./components/Pages/Reservation";
 import { NotFound } from "./components/Pages/NotFound";
 import { Footer } from "./components/Pages/Footer";
+import { Edit } from "./components/Edit";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/admin" element={<Admin />}></Route>
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/Reservation" element={<Reservation />}></Route>
+          <Route path="/Edit/:id" element={<Edit />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 export interface IAdminRes {
-  id?: number;
+  _id?: string;
   AOP: string;
   date: string;
   time: number;

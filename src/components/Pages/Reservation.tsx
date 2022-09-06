@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import blackLogo from "../../assets/blackLogo.png";
 import { IAdminRes } from "../../models/IAdminRes";
 import guestIcon from "../../assets/guestIcon.png";
@@ -9,13 +9,13 @@ import mailIcon from "../../assets/mailIcon.png";
 import name_icon from "../../assets/name_icon.png";
 import id_icon from "../../assets/id_icon.png";
 import { DeleteReservation } from "../DeleteReservation";
-import { AdminResContext } from "../../contexts/ReservationContext";
+import { Link, useParams } from "react-router-dom";
+import { Edit } from "../Edit";
 
 export const Reservation = () => {
   const [adminRes, setAdminRes] = useState<IAdminRes[]>([]);
-  const [isEditing, setIsEditing] = useState(false);
   const [currentRes, setCurrentRes] = useState<IAdminRes>({
-    id: 0,
+    _id: "",
     AOP: "",
     date: "",
     time: 0,
@@ -24,137 +24,84 @@ export const Reservation = () => {
     customerNumber: "",
   });
 
-  const reservetionObject = useContext(AdminResContext);
+  //const reservetionObject = useContext(AdminResContext);
 
   useEffect(() => {
     if (adminRes.length !== 0) return;
     axios.get<IAdminRes[]>("http://localhost:8000/show").then((response) => {
+      console.log(response.data);
+
       setAdminRes(response.data);
     });
-  });
+  }, []);
 
-  console.log(adminRes);
-
-  function handleEditInputChange(e: ChangeEvent<HTMLInputElement>) {
-    setCurrentRes({ ...currentRes, [e.target.name]: e.target.value });
-    //reservetionObject.handleEditInputChange(adminRes.id);
-  }
-
-  function handleEditForm(e: FormEvent) {
+  function handleDelete(e: any) {
     e.preventDefault();
+    const id = e.target.value;
 
-    handleEdit(currentRes.id, currentRes);
-  }
-
-  function handleEdit(id: any, updateRes: any) {
-    const updatedRes = adminRes.map((singleRes) => {
-      return singleRes.id === id ? updateRes : singleRes;
+    axios.delete("http://localhost:8000/delete/" + id).then((response) => {
+      console.log("REMOVED", response);
+      //set reservetions - set new res in front end that shows when res.id deleted
+      setAdminRes([...adminRes.filter((b) => b._id !== id)]);
     });
-    setIsEditing(false);
-
-    setAdminRes(updatedRes);
-    console.log("You clicked on edit");
   }
 
-  function handleEditClick(adminRes: any) {
-    setIsEditing(true);
-
-    setCurrentRes({ ...adminRes });
-  }
-
-  console.log(currentRes);
   return (
     <>
       <div className="main-reservations">
         <h1>Bokningar</h1>
         <img className="blackLogo" src={blackLogo} alt="Logo" width={150} />
 
-        {isEditing ? (
-          <form onSubmit={handleEditForm}>
-            <h2>Redigera bokning för {currentRes.customerName}</h2>
-            <label htmlFor="editReservetion">Redigera bokning: </label>
+        <div className="reservationSection">
+          {adminRes.map((singleRes) => {
+            return (
+              <div className="theReservetions" key={singleRes._id}>
+                <p className="customerName">
+                  <img className="guestName" src={name_icon} alt="nameIcon" />
+                  {singleRes.customerName}{" "}
+                </p>
+                <p className="customerId">
+                  <img className="guestId" src={id_icon} alt="nameIcon" /> +46
+                  {singleRes.customerNumber}
+                </p>
+                <p className="numberOfPeople">
+                  <img className="guestIcon" src={guestIcon} alt="guestIcon" />
+                  {singleRes.AOP} personer
+                </p>
 
-            <input
-              id="editReservation"
-              type="text"
-              name="AOP"
-              value={currentRes.AOP}
-              onChange={handleEditInputChange}
-            />
-            <input
-              id="editReservation"
-              type="text"
-              name="time"
-              value={currentRes.time}
-              onChange={handleEditInputChange}
-            />
-            <input
-              id="editReservation"
-              type="text"
-              name="date"
-              value={currentRes.date}
-              onChange={handleEditInputChange}
-            />
-
-            <button type="submit">Ändra</button>
-            <button onClick={() => setIsEditing(false)}>Tillbaka</button>
-          </form>
-        ) : (
-          <div className="reservationSection">
-            {adminRes.map((singleRes) => {
-              return (
-                <div className="theReservetions" key={singleRes.id}>
-                  <p className="customerName">
-                    <img className="guestName" src={name_icon} alt="nameIcon" />
-                    {singleRes.customerName}{" "}
-                  </p>
-                  <p className="customerId">
-                    <img className="guestId" src={id_icon} alt="nameIcon" />{" "}
-                    {singleRes.customerNumber}
-                  </p>
-                  <p className="numberOfPeople">
-                    <img
-                      className="guestIcon"
-                      src={guestIcon}
-                      alt="guestIcon"
-                    />
-                    {singleRes.AOP} personer
-                  </p>
-
-                  <p className="time">
-                    <img
-                      className="clockIcon"
-                      src={clock_icon}
-                      alt="clockIcon"
-                    />
-                    {singleRes.time}
-                  </p>
-                  <p className="date">
-                    <img
-                      className="dateIcon"
-                      src={calender_icon}
-                      alt="guestIcon"
-                    />
-                    {singleRes.date}
-                  </p>
-                  <p className="customerEmail">
-                    <img className="emailIcon" src={mailIcon} alt="guestIcon" />
-                    {singleRes.customerEmail}
-                  </p>
-                  <div className="buttonSection">
-                    <DeleteReservation></DeleteReservation>
-                    <button
-                      className="btn"
-                      onClick={() => handleEditClick(singleRes)}
-                    >
-                      Redigera bokning
-                    </button>
-                  </div>
+                <p className="time">
+                  <img className="clockIcon" src={clock_icon} alt="clockIcon" />
+                  {singleRes.time}
+                </p>
+                <p className="date">
+                  <img
+                    className="dateIcon"
+                    src={calender_icon}
+                    alt="guestIcon"
+                  />
+                  {singleRes.date.split("T")[0]}
+                </p>
+                <p className="customerEmail">
+                  <img className="emailIcon" src={mailIcon} alt="guestIcon" />
+                  {singleRes.customerEmail}
+                </p>
+                <div className="buttonSection">
+                  <button
+                    value={singleRes._id}
+                    className="btn"
+                    onClick={handleDelete}
+                    type="button"
+                  >
+                    Ta bort bokning
+                  </button>
+                  <Link to={"/Edit/" + singleRes._id}>
+                    <button className="btn">Redigera bokning</button>
+                  </Link>
                 </div>
-              );
-            })}
-          </div>
-        )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );

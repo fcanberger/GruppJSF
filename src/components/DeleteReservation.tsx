@@ -1,16 +1,10 @@
-export const DeleteReservation = () => {
-  function handleDelete(e: any) {
-    e.preventDefault();
-    console.log("You clicked on delete");
-  }
+import axios from "axios";
+import { ChangeEvent } from "react";
 
+export const DeleteReservation = () => {
   return (
     <>
-      <div>
-        <button className="btn" onClick={handleDelete}>
-          Ta bort bokning
-        </button>
-      </div>
+      <div></div>
     </>
   );
 };

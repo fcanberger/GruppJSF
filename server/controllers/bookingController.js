@@ -12,12 +12,12 @@ const showBookings = async (req, res) => {
 // Spara bokning
 
 const saveBooking = async (req, res) => {
-  console.log('starting')
+  console.log("starting");
   const { AOP, date, time, customerName, customerEmail, customerNumber } =
     req.body;
 
-    console.log("have values:" , req.body)
-    
+  console.log("have values:", req.body);
+
   // Ny bokning till mongoose
   const newBooking = await adminRes.create({
     AOP: AOP,
@@ -28,7 +28,7 @@ const saveBooking = async (req, res) => {
     customerNumber: customerNumber,
   });
   console.log("newBooking", newBooking);
-  res.status(200).send(newBooking)
+  res.status(200).send(newBooking);
 };
 
 // Ta bort boking som admin
@@ -36,7 +36,10 @@ const saveBooking = async (req, res) => {
 const deleteBooking = async (req, res) => {
   const id = req.params.id;
 
+  console.log(id);
   await adminRes.findById(id).deleteOne();
+
+  res.status(200).send();
 };
 
 // Redigera bokning som admin
@@ -57,6 +60,7 @@ const editBooking = async (req, res) => {
       customerNumber: req.body.customerNumber,
     }
   );
+  // res.redirect("http://localhost:3000/Reservation");
 };
 
 // Check availability
