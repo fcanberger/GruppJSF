@@ -14,9 +14,9 @@ app.get("/show", showBookings);
 
 app.post("/booking", saveBooking);
 
-app.post("/delete", deleteBooking);
+app.delete("/delete/:id", deleteBooking);
 
-app.post("/edit/:id", editBooking);
+app.put("/edit/:id", editBooking);
 
 app.get("/availability", checkAvailability);
 

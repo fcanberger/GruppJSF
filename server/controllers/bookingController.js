@@ -36,7 +36,10 @@ const saveBooking = async (req, res) => {
 const deleteBooking = async (req, res) => {
   const id = req.params.id;
 
+  console.log(id);
   await adminRes.findById(id).deleteOne();
+
+  res.status(200).send();
 };
 
 // Redigera bokning som admin

@@ -35,15 +35,16 @@ export const Reservation = () => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get<IAdminRes[]>(`http://localhost:8000/show/${currentRes._id}`)
-  //     .then((response) => {
-  //       console.log(response.data);
+  function handleDelete(e: any) {
+    e.preventDefault();
+    const id = e.target.value;
 
-  //       setAdminRes(response.data);
-  //     });
-  // }, []);
+    axios.delete("http://localhost:8000/delete/" + id).then((response) => {
+      console.log("REMOVED", response);
+      //set reservetions - set new res in front end that shows when res.id deleted
+      setAdminRes([...adminRes.filter((b) => b._id !== id)]);
+    });
+  }
 
   return (
     <>
@@ -60,7 +61,7 @@ export const Reservation = () => {
                   {singleRes.customerName}{" "}
                 </p>
                 <p className="customerId">
-                  <img className="guestId" src={id_icon} alt="nameIcon" />{" "}
+                  <img className="guestId" src={id_icon} alt="nameIcon" /> +46
                   {singleRes.customerNumber}
                 </p>
                 <p className="numberOfPeople">
@@ -85,7 +86,14 @@ export const Reservation = () => {
                   {singleRes.customerEmail}
                 </p>
                 <div className="buttonSection">
-                  <DeleteReservation></DeleteReservation>
+                  <button
+                    value={singleRes._id}
+                    className="btn"
+                    onClick={handleDelete}
+                    type="button"
+                  >
+                    Ta bort bokning
+                  </button>
                   <Link to={"/Edit/" + singleRes._id}>
                     <button className="btn">Redigera bokning</button>
                   </Link>
