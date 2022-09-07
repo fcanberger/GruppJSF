@@ -27,7 +27,7 @@ function App() {
           <Route path="/admin" element={<Admin />}></Route>
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/error-booking" element={<ErrorBooking />}></Route>
-          <Route path="/thanks" element={<Thanks />}></Route>
+          <Route path="/thanks/:id" element={<Thanks />}></Route>
           <Route path="/Reservation" element={<Reservation />}></Route>
           <Route path="/Edit/:id" element={<Edit />}></Route>
         </Route>

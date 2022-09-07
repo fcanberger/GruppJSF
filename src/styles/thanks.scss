@@ -1,0 +1,54 @@
+.mainThanksSection {
+  background-color: white;
+  padding: 70px;
+
+  .buttonSection {
+    display: flex;
+
+    .editBackBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      border: 1px solid white;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #1e1e1e;
+    }
+    .editBackBtn:hover {
+      color: #bf7138;
+      cursor: pointer;
+    }
+  }
+
+  .mainThanksContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 50px;
+    .titleText-first {
+      color: #1e1e1e;
+    }
+    .textContent {
+      color: black;
+    }
+    .bookingInfo {
+      display: flex;
+      flex-direction: row;
+      border: 2px solid #bf7138;
+      padding: 14px;
+      gap: 3px;
+      .titleText-second {
+        color: #1e1e1e;
+        margin: 0;
+      }
+      .bookingText {
+        color: black;
+        margin: 0;
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@ const {
   deleteBooking,
   editBooking,
   checkAvailability,
+  thanks,
 } = require("../controllers/bookingController.js");
 
 const app = express.Router();
@@ -19,5 +20,7 @@ app.delete("/delete/:id", deleteBooking);
 app.put("/edit/:id", editBooking);
 
 app.get("/availability", checkAvailability);
+
+app.get("/thanks/:id", thanks);
 
 module.exports = app;
