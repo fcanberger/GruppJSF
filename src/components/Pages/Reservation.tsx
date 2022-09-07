@@ -16,8 +16,17 @@ export const Reservation = () => {
   useEffect(() => {
     if (adminRes.length !== 0) return;
     axios.get<IAdminRes[]>("http://localhost:8000/show").then((response) => {
-      console.log(response.data);
+      // const sortByDate = adminRes
+      // console.log("response.data.date", response.data[3].date);
+      console.log(
+        "response.data.date.parse()",
+        Date.parse(response.data[3].date)
+      );
 
+      const sortByDate = response.data.sort(
+        (a, b) => Date.parse(a.date) - Date.parse(b.date)
+      );
+      console.log(response.data);
       setAdminRes(response.data);
     });
   }, []);
