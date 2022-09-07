@@ -76,7 +76,7 @@ export const Edit = () => {
         time: currentRes.time,
       })
       .then((response) => {
-        navigate("/Reservation");
+        navigate("/Reservation", { replace: true });
       });
     setEdit(false);
   }
