@@ -19,17 +19,23 @@ export const Home = () => {
           {/* <div className="white-logo"></div> */}
 
           <div className="text-div-booking">
+            <b>Boka bord hos oss</b>
             <p>
-              Varmt välkomna att boka bord hoss oss via vår bokningsida som ni
-              hittar via knappen nedan
+              Vi är en äkta italiensk restaurang med allt vad det innebär. Den
+              italienska stämningen finns där, likt kärleken till maten och
+              matlagningskonsten.
             </p>
             <p>
-              Vill ni boka bord för fler än 6 personer, vänligen kontakta oss.
+              Till oss kommer alla sorters människor som alla vill samma sak –
+              att äta fantastiska italienska rätter och dryck, men samtidigt få
+              umgås med familj och vänner på italienskt vis med mycket skratt
+              och glädje.
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-              iure, sit facere eaque error numquam dolores tempore quibusdam cum
-              autem quidem nemo tempora molestias aperiam? Nobis maiores.
+              Förutom sittplatser inomhus har vi även en mysig uteservering. Med
+              anledning av det inte så förutsägbara vädret går platserna{" "}
+              <b>utomhus </b>
+              inte att förboka.
             </p>
           </div>
           <div className="btn-booking">

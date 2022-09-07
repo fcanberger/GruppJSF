@@ -247,7 +247,7 @@ export const Booking = () => {
   // RETURN
   return (
     <div className="mainBooking">
-      <h1>Här bokar du bord</h1>
+      <h2>Välj det datum du önskar besöka oss</h2>
       <div className="datePicker">
         <DatePicker
           onChange={onChange}
@@ -330,6 +330,7 @@ export const Booking = () => {
           </button>
         </div>
       ) : null}
+      <hr></hr>
     </div>
   );
 };

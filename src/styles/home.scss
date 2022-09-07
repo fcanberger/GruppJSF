@@ -42,6 +42,7 @@
     p {
       margin: 10px;
       padding: 0px 40px;
+      // text-align: left;
     }
     .btn-booking {
       width: 100px;
@@ -155,7 +156,7 @@
       text-align: center;
     }
     p:first-of-type{
-      font-style: italic;
+      font-weight: bold;
     }
     p:last-of-type{
       margin-bottom: 40px;

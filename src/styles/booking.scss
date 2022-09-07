@@ -3,8 +3,17 @@
   flex-direction: column;
   // justify-content: center;
   align-items: center;
+  justify-content: space-between;
   min-height: 70vh;
   background-color: #1e1e1e;
+  padding-top: 50px;
+ 
+ 
+ hr {
+  color: white;
+  margin: 30px;
+  width: 80%;
+}
   .datePicker {
     display: flex;
     div.sdp {
