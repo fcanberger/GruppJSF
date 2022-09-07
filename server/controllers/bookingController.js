@@ -71,10 +71,20 @@ const checkAvailability = async (req, res) => {
   res.status(200).send(availability);
 };
 
+//Thank you
+const thanks = async (req, res) => {
+  // const id = req.params.id;
+  // const person = adminRes.find((p) => p.id === id);
+  const thanks = await adminRes.find();
+  console.log("thanks", thanks);
+  res.status(200).send(thanks);
+};
+
 module.exports = {
   showBookings,
   saveBooking,
   deleteBooking,
   editBooking,
   checkAvailability,
+  thanks,
 };

@@ -4,6 +4,8 @@ import { ICustomers } from "../../models/ICustomers";
 import DatePicker from "sassy-datepicker";
 import { IReservations } from "../../models/IReservations";
 import { Link, useNavigate } from "react-router-dom";
+import { IBooking } from "../../models/IBooking";
+import { IAdminRes } from "../../models/IAdminRes";
 
 export const Booking = () => {
   // STATES
@@ -184,10 +186,10 @@ export const Booking = () => {
       AOP: amount,
     };
     axios
-      .post("http://localhost:8000/booking", newBooking)
+      .post<IAdminRes>("http://localhost:8000/booking", newBooking)
       .then((response) => {
         console.log("axios - response.data", response.data);
-        navigate("/thanks", { replace: true });
+        navigate("/thanks/" + response.data._id, { replace: true });
       })
       .catch((error) => {
         console.log("error", error);
