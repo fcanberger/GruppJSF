@@ -58,9 +58,7 @@ body {
               transition: all 0.5s ease-out;
               margin-top: 50px;
             }
-            a:hover {
-              text-decoration: underline;
-            }
+         
           }
           li:first-child {
             margin-top: 130px;
@@ -110,6 +108,28 @@ h3 {
               a {
                 text-decoration: none;
                 font-size: larger;
+              }
+          
+              .underline-animation{
+                display: inline-block;
+                position: relative;
+                color:white;
+              }
+              .underline-animation::after{
+                content: "";
+                position: absolute;
+                width: 100%;
+                transform: scaleX(0);
+                height: 1px;
+                bottom: 0;
+                left: 0;
+                background-color: white;
+                transform-origin: bottom right;
+                transition: transform 0.3s ease-out;
+              }
+              .underline-animation:hover:after{
+                transform: scaleX(1);
+                transform-origin: bottom left;
               }
             }
           }

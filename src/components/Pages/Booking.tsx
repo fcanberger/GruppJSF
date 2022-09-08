@@ -30,19 +30,13 @@ export const Booking = () => {
   // IF DATE, TIME, AMOUNT IS CHOOSEN
   useEffect(() => {
     if (date && time && amount) {
-      // setBookingForm(true);
       checkAvailable();
-
-      console.log("TOISOSTRING", new Date(date).toISOString().split("T")[0]);
-      console.log("NEWDATE(DATE)", new Date(date));
     }
   }, [date, amount, time]);
 
   // DATEPICKER - CHECK IF DATE HAS BEEN PASSED OR SET CHOOSEN DATE
   const onChange = (newDate: Date) => {
-    console.log(`New date selected - ${newDate.toString()}`);
     var today = new Date(new Date().toString().substring(0, 15));
-    console.log(newDate < today);
     if (newDate < today === false) {
       setDateError(false);
       setErrorMsg("");
@@ -63,7 +57,6 @@ export const Booking = () => {
       .get("http://localhost:8000/availability")
       .then((response) => {
         const currentDate = new Date(date).toISOString().split("T")[0];
-        console.log("tid från DB:", response.data);
 
         // COMPARE BOOKINGS - MAKE A NEW ARRAY WITH BOOKINGS MATCHING CURRENT DATE & TIME
         const compareDateAndTime = response.data.filter(
@@ -74,15 +67,12 @@ export const Booking = () => {
             );
           }
         );
-        console.log("matched date and time", compareDateAndTime);
 
         // IF THERE IS LESS OR 15 RESERVATIONS
         if (compareDateAndTime.length <= 15) {
           setErrors(false);
           setBookingForm(true);
-          console.log("det finns bord");
         } else {
-          console.log("det finns inga bord");
           const text = "Det är tyvärr fullt, pröva en annan tid eller datum";
           setErrors(true);
           setErrorMsg(text);
@@ -129,9 +119,6 @@ export const Booking = () => {
 
   // HANDLE SUBMIT AND VALIDATION - ERROR MSG
   const handleSubmit = () => {
-    console.log(date);
-    console.log("on submit", new Date(date).toISOString().split("T")[0]);
-
     if (bookingInfoCustomer.name === "") {
       const text = "Fyll i namn";
       setErrors(true);
@@ -168,7 +155,6 @@ export const Booking = () => {
       setErrorMsg(text);
       return;
     }
-    console.log("sparar" + date, time, amount, bookingInfoCustomer);
     setShowTime(false);
     setBookingForm(false);
     createBooking();
@@ -188,11 +174,10 @@ export const Booking = () => {
     axios
       .post<IAdminRes>("http://localhost:8000/booking", newBooking)
       .then((response) => {
-        console.log("axios - response.data", response.data);
         navigate("/thanks/" + response.data._id, { replace: true });
       })
       .catch((error) => {
-        console.log("error", error);
+        console.log(error);
         <Link to="/error-booking"></Link>;
       });
   };
@@ -249,7 +234,7 @@ export const Booking = () => {
   // RETURN
   return (
     <div className="mainBooking">
-      <h1>Här bokar du bord</h1>
+      <h2>Välj det datum du önskar besöka oss</h2>
       <div className="datePicker">
         <DatePicker
           onChange={onChange}
@@ -306,7 +291,6 @@ export const Booking = () => {
               id="gdpr"
               name="gdpr"
               value="check"
-              // checked={handleGDPR == true}
               onChange={handleGDPR}
             ></input>
              
@@ -332,6 +316,7 @@ export const Booking = () => {
           </button>
         </div>
       ) : null}
+      <hr></hr>
     </div>
   );
 };

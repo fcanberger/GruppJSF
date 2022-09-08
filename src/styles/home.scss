@@ -9,8 +9,6 @@
 }
 .spaceSection {
   background-color: #1e1e1e;
-  // width: 100%;
-  // padding: 300px 0px;
   height: 92vh;
 }
 .wrapper-home {
@@ -19,7 +17,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   .booking-container {
     width: 100%;
     display: flex;
@@ -27,15 +24,9 @@
     align-items: center;
     text-align: center;
     margin: 0px 20px;
-    // padding: 40px;
     .Welcome-text {
       font-size: 50px;
     }
-    // .white-logo{
-    //   background-image: url(../assets/whiteLogo.png);
-    //   width: 100%;
-    //   height: 200px;
-    // }
     .text-div-booking {
       padding-top: 50px;
     }
@@ -44,8 +35,8 @@
       padding: 0px 40px;
     }
     .btn-booking {
-      width: 100px;
-      height: 30px;
+      width: 150px;
+      height: 40px;
       border: 1px solid white;
       display: flex;
       justify-content: center;
@@ -64,8 +55,7 @@
   }
   .four-images-container {
     background-color: #bf7138;
-    min-height: 50vh;
-    // width: 100%;
+    min-height: 30vh;
     padding: 25px 0px;
     display: flex;
     align-items: center;
@@ -79,42 +69,34 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 5px;
       .image-one {
         background-image: url(../assets/tomatopasta-mobile.jpg);
         background-repeat: no-repeat;
         background-position: center;
-        height: 230px;
-        width: 40%;
-        // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-        // 0 4px 10px 0 rgba(54, 54, 54, 0.19);
+        height: 260px;
+        width: 45%;
       }
       .image-two {
         background-image: url(../assets/parmesan-mobile.jpg);
         background-repeat: no-repeat;
         background-position: center;
-        height: 230px;
-        width: 40%;
-        // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-        // 0 4px 10px 0 rgba(54, 54, 54, 0.19);
+        height: 260px;
+        width: 45%;
       }
       .image-three {
         background-image: url(../assets/pizzaleft-mobile.jpg);
         background-repeat: no-repeat;
         background-position: center;
-        height: 230px;
-        width: 40%;
-        // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-        // 0 4px 10px 0 rgba(54, 54, 54, 0.19);
+        height: 260px;
+        width: 45%;
       }
       .image-four {
         background-image: url(../assets/pastacheese-mobile.jpg);
         background-repeat: no-repeat;
         background-position: center;
-        height: 230px;
-        width: 40%;
-        // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-        // 0 4px 10px 0 rgba(54, 54, 54, 0.19);
+        height: 260px;
+        width: 45%;
       }
     }
   }
@@ -124,10 +106,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // flex-direction: column-reverse;
     .opening-info {
-      // margin: 0px 20px 30px;
-
       h4 {
         font-size: 24px;
         margin: 5px 0px;
@@ -155,7 +134,7 @@
       text-align: center;
     }
     p:first-of-type{
-      font-style: italic;
+      font-weight: bold;
     }
     p:last-of-type{
       margin-bottom: 40px;
@@ -188,8 +167,8 @@
     }
 
     .btn-meny {
-      width: 100px;
-      height: 30px;
+      width: 150px;
+      height: 40px;
       border: 1px solid black;
       display: flex;
       justify-content: center;
@@ -201,7 +180,7 @@
       }
     }
     .btn-meny:hover {
-      background-color: #f5f5f5;
+      background-color: #fbfbfb;
       cursor: pointer;
     }
     hr {
@@ -212,14 +191,6 @@
   }
 }
 
-// @media screen and (min-width: 400px) {
-//   .spaceSection {
-//     background-color: #1e1e1e;
-//     // width: 100%;
-//     padding: 400px 0px;
-//   }
-// }
-// IPAD
 @media screen and (min-width: 598px) {
   .hero-image {
     background-image: url(../assets/hero-pad.jpg);
@@ -240,7 +211,7 @@
     }
     .four-images-container {
       width: 100%;
-      min-height: 40vh;
+      min-height: 20vh;
       display: flex;
       flex-direction: row;
       .image-wrapper {
@@ -329,7 +300,7 @@
   }
 }
 
-//DESKTOP
+//HERO IMAGE
 @media screen and (min-width: 769px) {
   .hero-image {
     background-image: url(../assets/dekstop-hero.jpg);
@@ -343,11 +314,9 @@
 }
 .spaceSection {
   background-color: #1e1e1e;
-  // width: 100%;
-  // padding: 650px 0px;
 }
 
-//DESKTOP IMAGES
+//DESKTOP 1023px
 @media screen and (min-width: 1023px) {
   .hero-image {
     background-image: url(../assets/dekstop-hero.jpg);
@@ -370,12 +339,12 @@
           font-size: 20px;
         }
       }
+      
     }
     .four-images-container {
       width: 100%;
       display: flex;
       flex-direction: row;
-      // padding: 45px;
       .image-wrapper {
         width: 100%;
         display: flex;
@@ -388,8 +357,6 @@
           background-position: center;
           min-height: 400px;
           width: 24%;
-          // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-          //   0 4px 10px 0 rgba(54, 54, 54, 0.19);
         }
         .image-two {
           background-image: url(../assets/parmesan-desktop.jpg);
@@ -397,8 +364,6 @@
           background-position: center;
           min-height: 400px;
           width: 24%;
-          // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-          //   0 4px 10px 0 rgba(54, 54, 54, 0.19);
         }
 
         .image-three {
@@ -407,8 +372,6 @@
           background-position: center;
           min-height: 400px;
           width: 24%;
-          // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-          //   0 4px 10px 0 rgba(54, 54, 54, 0.19);
         }
         .image-four {
           background-image: url(../assets/pastacheese-desktop.jpg);
@@ -416,17 +379,19 @@
           background-position: center;
           min-height: 400px;
           width: 24%;
-          // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-          //   0 4px 10px 0 rgba(54, 54, 54, 0.19);
         }
       }
     }
     .meny-container {
       padding-bottom: 40px;
-      width: auto;
-      p {
+      width: 100wv;
+      .meny-text-wrapper{
+        width: 1000px;
+        margin-bottom: 30px;
+        p {
         font-size: 1rem;
-        margin: 0px 120px;
+        margin: 0px 100px;
+       }
       }
       .btn-meny {
         width: 150px;
@@ -439,7 +404,7 @@
     }
     .opening-hours-container {
       max-width: 1000px;
-      height: 450px;
+      height: 550px;
       display: flex;
       justify-content: center;
       gap: 40px;
@@ -456,12 +421,44 @@
         height: 400px;
       }
     }
+    
   }
 }
 
-//DESKTOP LARGE
-@media screen and (min-width: 1600px) {
+//DESKTOP LARGE 1300px
+@media screen and (min-width: 1300px) {
   .hero-image {
     background-image: url(../assets/xl-hero.jpg);
+  }
+
+  .wrapper-home{
+    .four-images-container {
+      .image-wrapper {
+        gap:10px;
+        .image-one {
+          background-image: url(../assets/xl-tomatopasta.jpg);
+          min-height: 500px;
+          width: 24%;
+        }
+        .image-two {
+          background-image: url(../assets/xl-parmesan.jpg);     
+          min-height: 500px;
+          width: 24%;
+        }
+
+        .image-three {
+          background-image: url(../assets/xl-pizzaleft.jpg);
+          min-height: 500px;
+          width: 24%;
+        }
+        .image-four {
+          background-image: url(../assets/xl-pastacheese.jpg);
+          min-height: 500px;
+          width: 24%;
+
+        }
+      }
+    }
+    
   }
 }

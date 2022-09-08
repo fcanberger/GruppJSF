@@ -7,13 +7,6 @@ import { Footer } from "../components/Pages/Footer";
 
 export const Layout = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const desktopMQ = window.matchMedia("(min-width: 768px)");
-
-  function mediaQ(desktopMQ: string) {
-    if (desktopMQ) {
-      console.log("funkar");
-    }
-  }
 
   return (
     <>
@@ -30,17 +23,17 @@ export const Layout = () => {
             >
               <li>
                 <Link to="/meny" className="meny">
-                  <h3>MENY</h3>
+                  <h3 className="underline-animation">MENY</h3>
                 </Link>
               </li>
               <li>
                 <Link to="/booking" className="booking">
-                  <h3>BOKA BORD</h3>
+                  <h3 className="underline-animation">BOKA BORD</h3>
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="contact">
-                  <h3>KONTAKT</h3>
+                  <h3 className="underline-animation">KONTAKT</h3>
                 </Link>
               </li>
             </ul>
