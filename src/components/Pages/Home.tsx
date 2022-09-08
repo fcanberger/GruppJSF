@@ -25,8 +25,7 @@ export const Home = () => {
             </p>
             <p>
               Förutom sittplatser inomhus har vi även en mysig uteservering. Med
-              anledning av det inte så förutsägbara vädret går platserna{" "}
-              <b>utomhus </b>
+              anledning av det inte så förutsägbara vädret går platserna utomhus
               inte att förboka.
             </p>
           </div>

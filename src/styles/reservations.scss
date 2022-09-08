@@ -101,6 +101,9 @@
         justify-content: center;
         padding: 11px;
         gap: 10px;
+        a{
+          text-decoration: none;
+        }
         .btn {
           display: flex;
           justify-content: center;
@@ -117,6 +120,7 @@
       .btn:hover {
         background-color: #bf7138;
         cursor: pointer;
+        text-decoration: none;
       }
     }
   }

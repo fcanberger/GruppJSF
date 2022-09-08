@@ -29,10 +29,14 @@
     }
     .text-div-booking {
       padding-top: 50px;
-    }
-    p {
-      margin: 10px;
-      padding: 0px 40px;
+      b{
+        font-size: 1.2rem;
+      }
+      p {
+        margin: 10px;
+        padding: 0px 40px;
+        font-size: 1rem;
+      }
     }
     .btn-booking {
       width: 150px;
@@ -46,6 +50,8 @@
       a {
         text-decoration: none;
         color: white;
+        font-size: 1.2rem;
+
       }
     }
     .btn-booking:hover {
@@ -108,12 +114,12 @@
     align-items: center;
     .opening-info {
       h4 {
-        font-size: 24px;
+        font-size: 2rem;
         margin: 5px 0px;
         text-align: center;
       }
       p {
-        font-size: 18px;
+        font-size: 1.2rem;
         text-align: center;
 
       }
@@ -177,6 +183,7 @@
       a {
         text-decoration: none;
         color: black;
+        font-size: 1.2rem;
       }
     }
     .btn-meny:hover {
@@ -204,11 +211,11 @@
     width: 100%;
     .booking-container {
       max-width: 800px;
-
       p {
         margin: 5px;
       }
     }
+
     .four-images-container {
       width: 100%;
       min-height: 20vh;
@@ -253,16 +260,6 @@
         }
       }
     }
-
-      .opening-info {
-        h4 {
-          font-size: 24px;
-          margin: 5px 0px;
-        }
-        p {
-          font-size: 18px;
-        }
-      }
     .meny-container {
       background-color: white;
       p {
@@ -408,14 +405,6 @@
       display: flex;
       justify-content: center;
       gap: 40px;
-      .opening-info {
-        h4 {
-          font-size: 30px;
-        }
-        p {
-          font-size: 1rem;
-        }
-      }
       .opening-image-container {
         width: 600px;
         height: 400px;
