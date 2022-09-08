@@ -1,10 +1,5 @@
 import { Link } from "react-router-dom";
 import whiteLogo from "../../assets/whiteLogo.png";
-// import hero from "../../assets/hero.jpg";
-// import tomatopasta from "../../assets/tomatopasta.jpg";
-// import pizzaleft from "../../assets/pizzaleft.jpg";
-// import one from "../../assets/one.jpg";
-// import pastacheese from "../../assets/pastacheese.jpg";
 
 export const Home = () => {
   return (
@@ -12,12 +7,9 @@ export const Home = () => {
       <div className="hero-image"></div>
       <div className="spaceSection"></div>
       <div className="wrapper-home">
-        {/* <img src={hero} alt="hero image" height={200} width={500} /> */}
         <div className="booking-container">
           <h2 className="Welcome-text">Välkommen till </h2>
           <img className="white-logo" src={whiteLogo} alt="Logo" width={370} />
-          {/* <div className="white-logo"></div> */}
-
           <div className="text-div-booking">
             <b>Boka bord hos oss</b>
             <p>
@@ -38,19 +30,11 @@ export const Home = () => {
               inte att förboka.
             </p>
           </div>
-          <div className="btn-booking">
+          <div className="btn-booking btn-animation">
             <Link to="/booking">Boka bord</Link>
           </div>
         </div>
         <div className="four-images-container">
-          {/* <div className="image-wrapper-mobile">
-            <div className="image-one"></div>
-            <div className="image-two"></div>
-          </div>
-          <div className="image-wrapper-mobile">
-            <div className="image-three"></div>
-            <div className="image-four"></div>
-          </div> */}
           <div className="image-wrapper">
             <div className="image-one"></div>
             <div className="image-two"></div>
@@ -66,7 +50,6 @@ export const Home = () => {
             <p>Lördag: 12.00 - 01.00</p>
             <p>Söndag: 12.00 - 23.00</p>
           </div>
-          {/* <div className="opening-image-container"></div> */}
         </div>
 
         <div className="meny-container">
@@ -74,19 +57,21 @@ export const Home = () => {
             <div className="image-six"></div>
             <div className="image-seven"></div>
           </div>
-          <p>Vi erbjuder er det bästa käket från det italienska köket.</p>
-          <p>
-            Maten bygger på enkelhet, kvalitet och tradition. Vår färska pasta
-            är egentillverkad på farmors vis och alla våra rätter tillagas med
-            hållbara råvaror från småskaliga och större italienska och svenska
-            producenter.
-          </p>
-          <p>
-            Långsiktighet är något vi förespråkar konstant. Vi anser att det
-            inte spelar någon roll om råvarorna är av högsta kvalité om inte den
-            tillagas med passion och kärlek.
-          </p>
-          <div className="btn-meny">
+          <div className="meny-text-wrapper">
+            <p>Vi erbjuder er det bästa käket från det italienska köket.</p>
+            <p>
+              Maten bygger på enkelhet, kvalitet och tradition. Vår färska pasta
+              är egentillverkad på farmors vis och alla våra rätter tillagas med
+              hållbara råvaror från småskaliga och större italienska och svenska
+              producenter.
+            </p>
+            <p>
+              Långsiktighet är något vi förespråkar konstant. Vi anser att det
+              inte spelar någon roll om råvarorna är av högsta kvalité om inte
+              den tillagas med passion och kärlek.
+            </p>
+          </div>
+          <div className="btn-meny btn-animation">
             <Link to="/meny">Meny</Link>
           </div>
           <hr></hr>
