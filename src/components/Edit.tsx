@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { IAdminRes } from "../models/IAdminRes";
 
 export const Edit = () => {

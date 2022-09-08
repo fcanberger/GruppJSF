@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import whiteLogo from "../../assets/whiteLogo.png";
-//import { Reservation } from "./Reservation";
 
 export const Admin = () => {
   const [adminLogin, setAdminLogin] = useState(false);
@@ -42,11 +41,6 @@ export const Admin = () => {
       setErrorMessages({ name: "uname", message: errors.uname });
     }
   };
-
-  //const renderErrorMessage = (name: any) =>
-  // name === errorMessages.name && (
-  // <div className="error">{errorMessages.message}</div>
-  //  );
 
   const loginForm = (
     <div className="form">
