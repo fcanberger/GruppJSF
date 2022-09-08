@@ -428,7 +428,9 @@
 //DESKTOP LARGE 1300px
 @media screen and (min-width: 1300px) {
   .hero-image {
-    background-image: url(../assets/xl-hero.jpg);
+    background-image: url(../assets/1hero-xl.jpg);
+    background-position:center;
+    position: absolute;
   }
 
   .wrapper-home{
