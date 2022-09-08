@@ -28,14 +28,19 @@
       font-size: 50px;
     }
     .text-div-booking {
+      display: flex;
+      flex-direction: column;
       padding-top: 50px;
       b{
         font-size: 1.2rem;
+        text-align: left;
+        margin: 10px;
+
       }
       p {
         margin: 10px;
-        padding: 0px 40px;
         font-size: 1rem;
+        text-align: left;
       }
     }
     .btn-booking {
@@ -132,28 +137,15 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    // height: 500px;
-    p {
-      color: #1e1e1e;
-      margin: 10px;
-      padding: 0px 40px;
-      text-align: center;
-    }
-    p:first-of-type{
-      font-weight: bold;
-    }
-    p:last-of-type{
-      margin-bottom: 40px;
-    }
     .meny-images-container {
       max-width: 800px;
-      // padding: 15px;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-top: 35px;
+      margin: 35px 0px 20px 0px;
+      
       .image-six {
         background-image: url(../assets/basilico-mobile.jpg);
         height: 350px;
@@ -169,6 +161,21 @@
         width: 100%;
         background-repeat: no-repeat;
         background-position: center;
+      }
+    }
+    .meny-text-wrapper{
+      max-width: 800px;
+      p {
+        color: #1e1e1e;
+        margin: 10px;
+        text-align: left;
+      }
+      p:first-of-type{
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+      p:last-of-type{
+        margin-bottom: 40px;
       }
     }
 
@@ -227,7 +234,6 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        // justify-content: space-around;
         gap: 10px;
         .image-one {
           background-image: url(../assets/tomatopasta-mobile.jpg);
@@ -262,13 +268,6 @@
     }
     .meny-container {
       background-color: white;
-      p {
-        color: #1e1e1e;
-        padding: 5px 60px;
-        margin: 0px;
-        text-align: center;
-        font-size: 1rem;
-      }
       .meny-images-container {
         max-width: 800px;
         display: flex;
@@ -383,11 +382,9 @@
       padding-bottom: 40px;
       width: 100wv;
       .meny-text-wrapper{
-        width: 1000px;
         margin-bottom: 30px;
         p {
         font-size: 1rem;
-        margin: 0px 100px;
        }
       }
       .btn-meny {
