@@ -1,5 +1,5 @@
-import facebook from "../../assets/facebook.svg";
-import instagram from "../../assets/instagram.svg";
+import facebook from "../../assets/facebook.png";
+import instagram from "../../assets/instagram.png";
 import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
