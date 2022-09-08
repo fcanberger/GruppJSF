@@ -1,0 +1,54 @@
+footer {
+    transform: translate(0px, 300px);
+  }
+  
+  .Contact {
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    
+      .contact-container {
+        width: 100%;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin: 0px 20px;
+        margin-left: 200px;
+        .contactus {
+          font-size: 50px;
+          color: #BF7138;
+        }
+        .hittahit {
+          font-size: 50px;
+          color: #BF7138;
+        }
+        p {
+          margin: 5px;
+        }
+      }
+  }
+  
+  @media screen and (max-width: 1180px) {
+    footer {
+      transform: translate(0px, 200px);
+    }
+    .GMaps {
+      width: 80%;
+    }
+  }
+  
+  @media screen and (max-width: 769px) {
+    footer {
+      transform: translate(0px, 0px)
+    }
+    .contact-container {
+      margin: 0px 0px;
+      transform: translate(-50px, 0px);
+      .GMaps {
+        width: 75%;
+      }
+    }
+  }
