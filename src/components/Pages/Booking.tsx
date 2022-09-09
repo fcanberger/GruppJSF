@@ -23,7 +23,7 @@ export const Booking = () => {
   const [dateError, setDateError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [GDPR, setGDPR] = useState(false);
-
+  const [itsFullMsg, setItsFullMsg] = useState("");
   //USENAVIGATE
   const navigate = useNavigate();
 
@@ -37,6 +37,7 @@ export const Booking = () => {
   // DATEPICKER - CHECK IF DATE HAS BEEN PASSED OR SET CHOOSEN DATE
   const onChange = (newDate: Date) => {
     var today = new Date(new Date().toString().substring(0, 15));
+    console.log(newDate);
     if (newDate < today === false) {
       setDateError(false);
       setErrorMsg("");
@@ -56,8 +57,8 @@ export const Booking = () => {
     axios
       .get("http://localhost:8000/availability")
       .then((response) => {
-        const currentDate = new Date(date).toISOString().split("T")[0];
-
+        const currentDate = new Date(date).toLocaleDateString();
+        console.log("current date:", currentDate);
         // COMPARE BOOKINGS - MAKE A NEW ARRAY WITH BOOKINGS MATCHING CURRENT DATE & TIME
         const compareDateAndTime = response.data.filter(
           (booking: { date: string; time: string }) => {
@@ -67,6 +68,7 @@ export const Booking = () => {
             );
           }
         );
+        console.log("compare date and time", compareDateAndTime);
 
         // IF THERE IS LESS OR 15 RESERVATIONS
         if (compareDateAndTime.length <= 15) {
@@ -75,7 +77,7 @@ export const Booking = () => {
         } else {
           const text = "Det är tyvärr fullt, pröva en annan tid eller datum";
           setErrors(true);
-          setErrorMsg(text);
+          setItsFullMsg(text);
           setBookingForm(false);
         }
       })
@@ -295,7 +297,7 @@ export const Booking = () => {
             ></input>
              
             <label className="gdpr">
-              Du godkänner att vi enligt GDPR får spara dina uppgiter i syfta
+              Du godkänner att vi enligt GDPR får spara dina uppgiter i syfte
               att kunna hantera din bokning
             </label>
           </div>
@@ -316,6 +318,13 @@ export const Booking = () => {
           </button>
         </div>
       ) : null}
+      {errors && itsFullMsg ? (
+        <div className="error-msg">
+          <p>{itsFullMsg}</p>
+        </div>
+      ) : (
+        ""
+      )}
       <hr></hr>
     </div>
   );
