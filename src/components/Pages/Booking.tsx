@@ -37,7 +37,6 @@ export const Booking = () => {
   // DATEPICKER - CHECK IF DATE HAS BEEN PASSED OR SET CHOOSEN DATE
   const onChange = (newDate: Date) => {
     var today = new Date(new Date().toString().substring(0, 15));
-    console.log(newDate);
     if (newDate < today === false) {
       setDateError(false);
       setErrorMsg("");
@@ -58,7 +57,6 @@ export const Booking = () => {
       .get("http://localhost:8000/availability")
       .then((response) => {
         const currentDate = new Date(date).toLocaleDateString();
-        console.log("current date:", currentDate);
         // COMPARE BOOKINGS - MAKE A NEW ARRAY WITH BOOKINGS MATCHING CURRENT DATE & TIME
         const compareDateAndTime = response.data.filter(
           (booking: { date: string; time: string }) => {
@@ -68,7 +66,6 @@ export const Booking = () => {
             );
           }
         );
-        console.log("compare date and time", compareDateAndTime);
 
         // IF THERE IS LESS OR 15 RESERVATIONS
         if (compareDateAndTime.length <= 15) {

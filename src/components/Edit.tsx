@@ -23,25 +23,14 @@ export const Edit = () => {
     axios
       .get<IAdminRes[]>(`http://localhost:8000/show/${currentRes._id}`)
       .then((response) => {
-        console.log("response data: ", response.data);
-
         for (let i = 0; i < response.data.length; i++) {
           if (params.id === response.data[i]._id) {
-            console.log("parmas id matchar med response id");
             setCurrentRes(response.data[i]);
           }
         }
         setAdminRes(response.data);
       });
   }, [params]);
-
-  useEffect(() => {
-    console.log(
-      currentRes.date,
-      currentRes.customerName,
-      currentRes.customerEmail
-    );
-  });
 
   function handleEditForm(e: FormEvent) {
     e.preventDefault();
@@ -66,7 +55,6 @@ export const Edit = () => {
   }
 
   function saveEdit(e: any) {
-    console.log(currentRes._id);
     e.preventDefault();
 
     axios

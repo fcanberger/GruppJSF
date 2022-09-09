@@ -12,11 +12,9 @@ const showBookings = async (req, res) => {
 // Spara bokning
 
 const saveBooking = async (req, res) => {
-  console.log("starting");
   const { AOP, date, time, customerName, customerEmail, customerNumber } =
     req.body;
 
-  console.log("have values:", req.body);
 
   // Ny bokning till mongoose
   const newBooking = await adminRes.create({
@@ -27,7 +25,6 @@ const saveBooking = async (req, res) => {
     customerEmail: customerEmail,
     customerNumber: customerNumber,
   });
-  console.log("newBooking", newBooking);
   res.status(200).send(newBooking);
 };
 
@@ -36,7 +33,6 @@ const saveBooking = async (req, res) => {
 const deleteBooking = async (req, res) => {
   const id = req.params.id;
 
-  console.log(id);
   await adminRes.findById(id).deleteOne();
 
   res.status(200).send();
@@ -66,7 +62,6 @@ const editBooking = async (req, res) => {
 // Check availability
 const checkAvailability = async (req, res) => {
   const availability = await adminRes.find();
-  console.log(availability);
 
   res.status(200).send(availability);
 };
@@ -76,7 +71,6 @@ const thanks = async (req, res) => {
   // const id = req.params.id;
   // const person = adminRes.find((p) => p.id === id);
   const thanks = await adminRes.find();
-  console.log("thanks", thanks);
   res.status(200).send(thanks);
 };
 

@@ -22,12 +22,8 @@ export const Thanks = () => {
     axios
       .get<IAdminRes[]>(`http://localhost:8000/thanks/${params.id}`)
       .then((response) => {
-        console.log("response data: ", response.data);
-        console.log(params.id);
-
         for (let i = 0; i < response.data.length; i++) {
           if (params.id === response.data[i]._id) {
-            console.log("parmas id matchar med response id");
             setBooking(response.data[i]);
           }
         }

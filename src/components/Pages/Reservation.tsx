@@ -19,7 +19,6 @@ export const Reservation = () => {
       const sortByDate = response.data.sort(
         (a, b) => Date.parse(a.date) - Date.parse(b.date)
       );
-      console.log(response.data);
       setAdminRes(response.data);
     });
   }, []);
@@ -28,7 +27,6 @@ export const Reservation = () => {
     e.preventDefault();
     const id = (e.target as HTMLInputElement).value;
     axios.delete("http://localhost:8000/delete/" + id).then((response) => {
-      console.log("REMOVED", response);
       //set reservetions - set new res in front end that shows when res.id deleted
       setAdminRes([...adminRes.filter((b) => b._id !== id)]);
     });
